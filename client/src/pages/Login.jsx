@@ -16,12 +16,13 @@ const Login = () => {
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password"/>
                     </li>
-
-                    <button type="submit">Login</button>
+                    
+                    <button className='loginbtn' type="submit">Login</button>
 
                     <Link to="/signup">
-                        <button>Sign Up</button>
+                        <button className='signupbtn'>Sign Up</button>
                     </Link>
+                    
                 </ul>
             </form>
         </div>
