@@ -65,7 +65,7 @@ button {
 }
 
 
-@media screen and (min-width: 300px) {
+@media screen and (min-width: 300px) and (max-width: 600px) {
     .login {
         width: 70%;
     }
@@ -93,7 +93,38 @@ button {
         transform: translate(10%, 50%);
         border: solid 1px rgb(59, 5, 70); 
     }
+}
 
+@media screen and (min-width: 600px) and (max-width: 800px){
+    .login {
+        width: 70%;
+        transform: translate(-50%, -65%);
+    }
+    button {
+        width: 18%;
+        transform: translate(100%, 50%);
+    }
+}
 
-    
+@media screen and (min-width: 800px) and (max-width: 900px) {
+    .login {
+        width: 70%;
+        transform: translate(-50%, -80%);
+    }
+    button {
+        width: 18%;
+        transform: translate(100%, 50%);
+    }
+
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1000px){
+    .login {
+        width: 70%;
+        transform: translate(-50%, -100%);
+    }
+    button {
+        width: 18%;
+        transform: translate(100%, 50%);
+    }
 }
