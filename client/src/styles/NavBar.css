@@ -1,0 +1,46 @@
+.navbar {
+    width: 5%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.sidebar {
+    height: 100vh;
+    background-color: rgb(36, 3, 43);
+    width: 30%;
+    display: flex;
+
+}
+
+.dropbtn {
+    margin: 0px;
+}
+
+.navbar-content {
+    opacity: 0;
+}
+
+.navbar-content.show {
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 25px;
+    padding-top: 40px;
+    margin-top: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: rgb(140, 253, 210);
+    margin-bottom: 30px;
+    font-size: 30px;
+    border-bottom: solid 1px rgb(140, 253, 210);
+}
+
+
+
+

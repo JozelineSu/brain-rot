@@ -1,7 +1,7 @@
 import '../styles/Login.css';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+function Login() {
     return (
         <div className="login">
             <form action="" method="">{/*action is location URL data is sent method is HTTP method to send data usually GET or POST */}

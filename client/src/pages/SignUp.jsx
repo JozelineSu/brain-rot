@@ -1,6 +1,6 @@
 import '../styles/Login.css';
 
-const SignUp = () => {
+function SignUp() {
     return (
         <div className="login">
             <form action="" method="">{/*action is location URL data is sent method is HTTP method to send data usually GET or POST */}
