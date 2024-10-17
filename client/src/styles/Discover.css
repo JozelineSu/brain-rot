@@ -1,0 +1,32 @@
+.searchbar {
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.posts {
+    background-color: white;
+    padding: 10px;
+}
+
+.user-post {
+    display: flex;
+    justify-content: space-around;    
+}
+
+.post-content {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.post-text {
+    border: rgb(59, 5, 70) 1px solid;
+    text-align: left;
+}
+
+.post-buttons {
+
+}
+.post-buttons button {
+    background-color: rgb(59, 5, 70);
+}
