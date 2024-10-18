@@ -1,4 +1,5 @@
 import NavBar from "../components/NavBar";
+import AddPostBtn from "../components/AddPostBtn";
 import "../styles/Discover.css";
 
 function Discover() {
@@ -26,13 +27,13 @@ function Discover() {
                             <button>Like</button>
                             <button>Comment</button>
                             <button>Repost</button>
-
                         </div>
                         <div className="tags">
-                            <p>#tag, #tag, #tag, # tag</p>
+                            #tag, #tag, #tag, # tag
                         </div>                        
                     </div>
                 </div>
+                <AddPostBtn/>
            </div> 
             
         </div>

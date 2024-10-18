@@ -1,11 +1,20 @@
+.element::-webkit-scrollbar {
+    display: none;
+  }
 .searchbar {
     background-color: white;
     margin-bottom: 30px;
+    border-radius: 5px;
+    height: 40px;
+    border: 2px solid rgb(140, 253, 210);
 }
 
 .posts {
     background-color: white;
     padding: 10px;
+    height: 100vh;
+    border-radius: 5px;
+    position: relative;
 }
 
 .user-post {
@@ -16,17 +25,25 @@
 .post-content {
     display: flex;
     flex-direction: column;
+    width: 50%;
     
 }
 
-.post-text {
+.post-text, .tags {
     border: rgb(59, 5, 70) 1px solid;
     text-align: left;
+    border-radius: 5px; 
+    padding: 5px;   
 }
 
 .post-buttons {
-
+    display: flex;
+    margin-bottom: 20px;
+    margin-right: 50px;
 }
+
 .post-buttons button {
     background-color: rgb(59, 5, 70);
+    color: rgb(140, 253, 210);
+    width: 20%;
 }

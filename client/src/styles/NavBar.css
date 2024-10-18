@@ -10,9 +10,9 @@
 .sidebar {
     height: 100vh;
     background-color: rgb(36, 3, 43);
-    width: 30%;
+    width: 20%;
     display: flex;
-
+    z-index: 1;
 }
 
 .dropbtn {

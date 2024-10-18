@@ -5,6 +5,8 @@ import App from './App.jsx';
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import Discover from './pages/Discover.jsx';
+import Profile from './pages/Profile.jsx';
+import Rankings from './pages/Rankings.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
         path: '/discover',
         element: <Discover />
       },
+      {
+        path: '/profile',
+        element: <Profile />
+      },
+      {
+        path: '/rankings',
+        element: <Rankings />
+      }
     ]
   },
 ])

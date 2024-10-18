@@ -1,0 +1,11 @@
+.add-post {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: none;
+    font-size: 60px;
+    font-weight: 800;
+    transform: translate(580px, 750px);
+    position: absolute;
+    background-color: rgb(140, 253, 210);
+}
