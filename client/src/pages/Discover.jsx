@@ -1,6 +1,8 @@
 import NavBar from "../components/NavBar";
+import { Link } from "react-router-dom";
 import AddPostBtn from "../components/AddPostBtn";
 import "../styles/Discover.css";
+
 
 function Discover() {
 
@@ -25,7 +27,7 @@ function Discover() {
                         </div>
                         <div className="post-buttons">
                             <button>Like</button>
-                            <button>Comment</button>
+                            <Link to='/comments'>Comment</Link>
                             <button>Repost</button>
                         </div>
                         <div className="tags">

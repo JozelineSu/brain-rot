@@ -16,13 +16,21 @@ function Profile() {
                     </div>
                 </div> 
 
-                <div className="lists-characters">
+                {/**<div className="lists-characters">
                     <p>lists</p>
                     <p>characters</p>
-                </div> 
+                </div>  */}
 
                 <div className="user-likes">
-                    user Likes
+                    <div className="liked-post">
+                        <h1>Post user liked</h1>
+                    </div>
+                    <div className="liked-post">
+                        <h1>Post user ked</h1>
+                    </div>
+                    <div className="liked-post">
+                        <h1>Post user liked</h1>
+                    </div>
                 </div>
                 <AddPostBtn />
             </div>

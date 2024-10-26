@@ -7,6 +7,7 @@ import SignUp from './pages/SignUp.jsx';
 import Discover from './pages/Discover.jsx';
 import Profile from './pages/Profile.jsx';
 import Rankings from './pages/Rankings.jsx';
+import Comments from './pages/Comments.jsx';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: '/rankings',
         element: <Rankings />
+      },
+      {
+        path: '/comments',
+        element: <Comments />
       }
     ]
   },
