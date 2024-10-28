@@ -1,6 +1,6 @@
 import "../styles/Profile.css";
 import NavBar from "../components/NavBar";
-import AddPostBtn from "../components/AddPostBtn";
+import AddBtn from "../components/AddBtn";
 
 function Profile() {
     return (
@@ -32,7 +32,7 @@ function Profile() {
                         <h1>Post user liked</h1>
                     </div>
                 </div>
-                <AddPostBtn />
+                <AddBtn />
             </div>
 
         </div>

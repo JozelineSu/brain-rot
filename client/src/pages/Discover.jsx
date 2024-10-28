@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 import { Link } from "react-router-dom";
-import AddPostBtn from "../components/AddPostBtn";
+import AddBtn from "../components/AddBtn";
 import "../styles/Discover.css";
 
 
@@ -35,7 +35,7 @@ function Discover() {
                         </div>                        
                     </div>
                 </div>
-                <AddPostBtn/>
+                <AddBtn/>
            </div> 
             
         </div>
