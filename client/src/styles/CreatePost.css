@@ -1,0 +1,38 @@
+.create-post {
+    background-color: white;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.post-form {
+    height: 100vh;
+    border: none;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
+    
+}
+
+.user-post {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-self: center;
+}
+
+.post-buttons {
+    align-self: flex-end;
+    width: 30%;
+    margin-right: 175px;
+}
+.submit-post {
+    width: 10%;
+    align-self: center;
+    margin-left: 405px;
+}

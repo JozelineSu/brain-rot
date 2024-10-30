@@ -1,8 +1,30 @@
-.banner {
+.header {
     background-color: white;
+    position: fixed;
+    width: 100%;
+    height: 50%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px rgb(0, 255, 255);
 }
 
-.lists-characters {
+.user-pic {
+    position: absolute;
+    margin: 70px;
+    top: 0;
+    right: 0;
+}
+
+.profile-nav {
     border: solid 1px rgb(140, 253, 210);
+    display: flex;
+    justify-content: space-around;
+}
+
+.user-likes {
+    margin-top: 450px;
 }
 

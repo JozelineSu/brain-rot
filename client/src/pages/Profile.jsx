@@ -4,22 +4,26 @@ import AddBtn from "../components/AddBtn";
 
 function Profile() {
     return (
-        <div>
-            <NavBar />
-            <div>
-                <div className="banner">
-                    <div className="banner-pic">
-                        Banner Pic
-                    </div>
-                    <div className="user-pic">
-                        User Pic
-                    </div>
-                </div> 
+        <div className="profile">
+            <NavBar />           
+                
+                    <div className="header">
+                        <div className="header-pic">
+                            Banner Pic
+                        </div>
+                        <div className="user-pic">
+                            User Pic
+                        </div>
+                        <div className="profile-nav">
+                            <p>my followers</p>
+                            <p>my posts</p>
+                            <p>lists</p>
+                            <p>characters</p>
+                        </div>    
+                    </div>                 
+                 
 
-                {/**<div className="lists-characters">
-                    <p>lists</p>
-                    <p>characters</p>
-                </div>  */}
+ 
 
                 <div className="user-likes">
                     <div className="liked-post">
@@ -33,8 +37,6 @@ function Profile() {
                     </div>
                 </div>
                 <AddBtn />
-            </div>
-
         </div>
     )
 }

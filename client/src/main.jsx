@@ -8,6 +8,11 @@ import Discover from './pages/Discover.jsx';
 import Profile from './pages/Profile.jsx';
 import Rankings from './pages/Rankings.jsx';
 import Comments from './pages/Comments.jsx';
+import CreatePost from './pages/CreatePost.jsx';
+import Characters from './pages/Characters.jsx';
+import Lists from './pages/Lists.jsx';
+import NewCharacter from './pages/NewCharacter.jsx';
+import NewList from './pages/NewList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +42,26 @@ const router = createBrowserRouter([
       {
         path: '/comments',
         element: <Comments />
+      },
+      {
+        path: '/createPost',
+        element: <CreatePost />
+      },
+      {
+        path: '/characters',
+        element: <Characters />
+      },
+      {
+        path: '/lists',
+        element: <Lists />
+      },
+      {
+        path: '/newCharacters',
+        element: <NewCharacter />
+      },
+      {
+        path: '/newLists',
+        element: <NewList />
       }
     ]
   },

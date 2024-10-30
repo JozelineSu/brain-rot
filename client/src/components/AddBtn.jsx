@@ -1,4 +1,5 @@
 import "../styles/AddBtn.css";
+import { Link } from "react-router-dom";
 /*
  i want user to click button then it will display option to user: character icon (to add facorite character), list icon (to add list), post icon (to add post)
 
@@ -20,7 +21,7 @@ function AddBtn() {
         <div className="addBtn-nav">
             <h1 className="characterBtn">Char</h1>
             <h1 className="listBtn">List</h1>
-            <h1 className="postBtn">Post</h1>
+            <Link to="/createPost"className="postBtn">Post</Link>
         </div>
         <div>
           <h1 onClick={buttonNav} className="add-post">+</h1>  

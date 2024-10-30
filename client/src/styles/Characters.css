@@ -1,0 +1,43 @@
+.current-characters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;   
+}
+
+.character-card {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border: solid 3px rgb(140, 253, 210);
+    width: 25%;
+    height: 500px;
+}
+
+.character-img {
+    height: 45%;
+}
+
+.edit-deleteBtns {
+    margin: 10px;
+}
+
+.edit-deleteBtns button {
+
+    background-color: rgb(59, 5, 70);
+    color: rgb(140, 253, 210);
+}
+
+.addCharacterBtn {
+    position: absolute;
+    width: 600px;
+    margin: 80px;
+    bottom: 0;
+    right: 0;
+}
+
+.addCharacterBtn button {
+    background-color: rgb(140, 253, 210);
+    color: rgb(59, 5, 70);
+}

@@ -5,8 +5,6 @@ import "../styles/Discover.css";
 
 
 function Discover() {
-
-
     return (
         
         <div className="discover">
