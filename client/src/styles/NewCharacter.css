@@ -1,0 +1,32 @@
+.add-character {
+    background-color: white;
+    height: 100vh;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.character-form {
+    border: none;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.character-form input {
+    width: 100%;
+    height: 100%;
+}
+
+.addBtn {
+    color: rgb(140, 253, 210);
+    background-color: rgb(59, 5, 70);
+}
+
+.cancelBtn {
+    border-color: rgb(59, 5, 70);
+    color: rgb(59, 5, 70);
+}

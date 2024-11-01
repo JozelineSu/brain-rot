@@ -13,6 +13,7 @@ import Characters from './pages/Characters.jsx';
 import Lists from './pages/Lists.jsx';
 import NewCharacter from './pages/NewCharacter.jsx';
 import NewList from './pages/NewList.jsx';
+import ListChoices from './pages/ListChoices.jsx'
 
 const router = createBrowserRouter([
   {
@@ -56,12 +57,16 @@ const router = createBrowserRouter([
         element: <Lists />
       },
       {
-        path: '/newCharacters',
+        path: '/newCharacter',
         element: <NewCharacter />
       },
       {
-        path: '/newLists',
+        path: '/newList',
         element: <NewList />
+      },
+      {
+        path: '/listChoices',
+        element: <ListChoices />
       }
     ]
   },

@@ -1,0 +1,30 @@
+.list {
+    background-color: white;
+    margin-bottom: 35px;
+    border-radius: 20px;
+}
+
+.list-btns {
+    padding: 10px;  
+    width: 30%;
+    display: flex;
+    justify-self: end;
+}
+
+.list-btns button {
+    color: rgb(140, 253, 210);
+    background-color: rgb(59, 5, 70);
+}
+
+.addListBtn {
+    position: absolute;
+    width: 600px;
+    margin: 80px;
+    bottom: 0;
+    right: 0;    
+}
+
+.addListBtn button {
+    color: rgb(59, 5, 70);
+    background-color: rgb(140, 253, 210);;
+}

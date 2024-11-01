@@ -1,0 +1,8 @@
+.square-diagram,
+.ven-diagram,
+.ranking-diagram {
+    background-color: white;
+    height: 250px;
+    margin: 10px;
+    border-radius: 20px;
+}
