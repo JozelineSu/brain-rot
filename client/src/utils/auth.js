@@ -1,8 +1,8 @@
-import decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 class AuthService {
     getProfile() {
-        return decode(this.getToken());
+        return jwtDecode(this.getToken());
     }
     loggedIn() {
         const token = this.getToken();
@@ -12,7 +12,7 @@ class AuthService {
 
     isTokenExpired(token) {
         //decode the token to get its expiration time that was set by ther server
-        const decoded = decode(token);
+        const decoded = jwtDecode(token);
         // if the expiration time is less that the current time (in secods), the token is expired and we return 'true'
         if (decoded.exp < Date.now() / 1000) {
             localStorage.removeItem('id_token');
