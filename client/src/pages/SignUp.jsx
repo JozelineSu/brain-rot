@@ -46,8 +46,8 @@ const SignUp = () => {
             <div>
                 {data ? (
                     <p>
-                        Sign up successful!
-                        <Link to='/discover'>head to homepage</Link>
+                        You're logged in! You may now head{' '}
+                        <Link to="/">back to homepage</Link>
                     </p>
                 ) : (
                     <form onSubmit={handleFormSubmit}>

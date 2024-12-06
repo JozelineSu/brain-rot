@@ -22,15 +22,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Login />
+        element: <Discover />
       },
       {
         path: '/signup',
         element: <SignUp />
       },
       {
-        path: '/discover',
-        element: <Discover />
+        path: '/login',
+        element: <Login />
       },
       {
         path: '/profile',
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         element: <Rankings />
       },
       {
-        path: '/comments',
+        path: '/posts/:postId',
         element: <Comments />
       },
       {

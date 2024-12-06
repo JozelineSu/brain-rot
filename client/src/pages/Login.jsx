@@ -49,7 +49,7 @@ const Login = (props) => {
                 <div>
                     {data ? (
                         <p>
-                            You're logged in!
+                            You're logged in! You may now head{' '}
                             <Link to="/">back to homepage</Link>
                         </p>
                     ) : (

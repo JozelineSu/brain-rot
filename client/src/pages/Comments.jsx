@@ -1,43 +1,63 @@
 import '../styles/Comments.css';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 
-function Comments() {
+import CommentForm from '../components/CommentForm';
+
+import { QUERY_SINGLE_POST } from '../utils/queries';
+
+const Comments = () => {
+    const { postId } = useParams();
+    console.log('post ID from url params: ', postId);
+    const { loading, data, error } = useQuery(QUERY_SINGLE_POST, {
+        variables: { postId: postId },
+    });
+    console.log('Query result:', { loading, data, error});
+
+    const post = data?.post || {};
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    if (!post.comments.length) {
+        return (
+            <>
+        <h3>No comments</h3>
+        <div>
+                <CommentForm postId={post._id}/>
+        </div>    
+            </>
+        
+    
+    )
+
+    }
     return (
+        <>
+        
         <div className='comment-section'>
-            <div className='comments-display'>
-                <h1 className='go-back'>back</h1>
-                <div className='comments'>
-                    <div className='user-comment'>
-                        <div>
-                            user pic
-                        </div>
-                        <div className='text-comment'>
-                            <p>this is my comment</p>
-                        </div>
-                    </div>
-                    <div className='user-comment'>
-                        <div>
-                            user pic
-                        </div>
-                        <div className='text-comment'>
-                            <p>this is my comment</p>
+            {
+                post.comments.map((comment) => (
+                    <div key={comment._id}>
+                        <div className="comment-card">
+                            <h4 className="comment-user">
+                                {comment.commentAuthor}
+                            </h4>
+                            <p className="comment-text">
+                                {comment.commentText}
+                            </p>
                         </div>
                     </div>
-                    <div className='user-comment'>
-                        <div>
-                            user pic
-                        </div>
-                        <div className='text-comment'>
-                            <p>this is my comment</p>
-                        </div>
-                    </div>
-                </div>
+
+                ))
+            }
+            <div>
+                <CommentForm postId={post._id}/>
             </div>
-            <form className="comment-form">
-                <input type="text"></input>
-                <button>/\</button>
-            </form>
         </div>
+        </>
     )
 }
+
+
 
 export default Comments;

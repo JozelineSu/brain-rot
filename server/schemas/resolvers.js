@@ -72,7 +72,12 @@ const resolvers = {
             throw AuthenticationError;
         },
         addComment: async (parent, { postId, commentText }, context) => {
+            if (!context.user) {
+                throw new AuthenticationError('Could not authenticate user.');
+              }
+            
             if (context.user) {
+            
                 return Post.findOneAndupdate(
                     {_id: postId },
                     {
