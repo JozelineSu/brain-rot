@@ -52,8 +52,8 @@ const resolvers = {
             }
 
             const token = signToken(user);
-
             return { token, user };
+            
         },
         addPost: async (parent, { postText }, context) => {
             if (context.user) {
@@ -71,15 +71,10 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
-        addComment: async (parent, { postId, commentText }, context) => {
-            if (!context.user) {
-                throw new AuthenticationError('Could not authenticate user.');
-              }
-            
+        addComment: async (parent, { postId, commentText }, context) => {  
             if (context.user) {
-            
-                return Post.findOneAndupdate(
-                    {_id: postId },
+                return Post.findOneAndUpdate(
+                    { _id: postId },
                     {
                         $addToSet: {
                             comments: { commentText, commentAuthor: context.user.username},
@@ -92,27 +87,6 @@ const resolvers = {
                 );
             }
             throw AuthenticationError;
-        },
-        addReply: async (parent, { postId, commentId, replyText }, context) => {
-            if (context.user) {
-                return Post.findOneAndUpdate(
-                    {_id: postId, "comments._id": commentId},
-                    {
-                        $push: {
-                            "comments.$.replies": {
-                                replyText,
-                                replyAuthor: context.user.username,      
-                            }
-                        }
-                    },
-                    {
-                        new: true,
-                        runValidators: true,
-                    }
-
-                );
-            }
-            throw new AuthenticationError;
         },
         addCharacter: async (parent, { characterName, description }, context) => {
             if (context.user) {
@@ -172,23 +146,6 @@ const resolvers = {
                             comments: {
                                 _id: commentId,
                                 commentAuthor: context.user.username,
-                            },
-                        },
-                    },
-                    { new: true }
-                );
-            }
-            throw AuthenticationError;
-        },
-        removeReply: async (parent, { postId, commentId, replyId}, context) => {
-            if (context.user) {
-                return Post.findOneAndUpdate(
-                    {_id: postId, "comments._id": commentId},
-                    {
-                        $pull: {
-                            replies: {
-                                _id: replyId,
-                                replyAuthor: context.user.username,
                             },
                         },
                     },

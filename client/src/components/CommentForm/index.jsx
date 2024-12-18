@@ -2,12 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
-import { ADD_COMMENT } from "../utils/mutations";
+import { ADD_COMMENT } from "../../utils/mutations";
 
-import Auth from '../utils/auth';
+import Auth from "../../utils/auth";
 
 const CommentForm = ({ postId }) => {
-    console.log('in comment form postId:', postId);
     const [commentText, setCommentText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
 
@@ -17,18 +16,19 @@ const CommentForm = ({ postId }) => {
         event.preventDefault();
 
         try {
-            console.log('Mutation variables:', { postId, commentText });
+            console.log("getprofile function", Auth.getProfile());
 
             const { data } = await addComment({
                 variables: {
                     postId,
                     commentText,
+                    commentAuthor: Auth.getProfile().username
                 },
             });
+            console.log('Comment form mutation variables:', { postId, commentText, commentAuthor});
 
             setCommentText('');
         } catch (err) {
-            console.log('Mutation sent with:', { postId, commentText });
         
             console.error('error adding comment', err);
         }

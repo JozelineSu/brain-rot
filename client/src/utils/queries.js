@@ -56,12 +56,6 @@ export const QUERY_SINGLE_POST = gql`
                 commentText
                 commentAuthor
                 createdAt
-                replies {
-                    _id
-                    replyText
-                    replyAuthor
-                    createdAt
-                }
             }
         }
     }

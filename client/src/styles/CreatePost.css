@@ -5,8 +5,12 @@
 
 .header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    z-index: 1;
+}
 
+.username {
+    color: blue;
 }
 
 .post-form {

@@ -3,10 +3,12 @@ import { jwtDecode } from 'jwt-decode';
 class AuthService {
     getProfile() {
       return jwtDecode(this.getToken());
+
     }
   
     loggedIn() {
       const token = this.getToken();
+      console.log("token from being logged in:", token);
       // If there is a token and it's not expired, return `true`
       return token && !this.isTokenExpired(token) ? true : false;
     }

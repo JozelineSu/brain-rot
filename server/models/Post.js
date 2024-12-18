@@ -24,6 +24,8 @@ const postSchema = new Schema (
             commentText: {
                 type: String,
                 required: true,
+                minlength: 1,
+                maxlength: 280,
             },
             commentAuthor: {
                 type: String,
@@ -33,26 +35,10 @@ const postSchema = new Schema (
                 type: Date,
                 default: Date.now,
                 get: (timestamp) => dateFormat(timestamp),
-              },
-            replies: [{
-                replyText: {
-                    type: String,
-                    required: true,
-                },
-                replyAuthor: {
-                    type: String,
-                    required: true,
-                },
-                createdAt: {
-                    type: Date,
-                    default: Date.now,
-                    get: (timestamp) => dateFormat(timestamp),
-                  },
-            }],
-        }]
-
-    }
-)
+            },
+        },
+    ],  
+})
 
 const Post = model('post', postSchema);
 

@@ -29,14 +29,6 @@ type Comment {
     commentText: String
     commentAuthor: String
     createdAt: String
-    replies: [Reply]!
-}
-
-type Reply {
-    _id: ID
-    replyText: String
-    replyAuthor: String
-    createdAt: String
 }
 
 type Auth {
@@ -59,11 +51,9 @@ type Mutation {
     login(email: String!, password: String!): Auth
     addPost(postText: String!): Post
     addComment(postId: ID!, commentText: String!): Post
-    addReply(postId: ID!, commentId: ID!, replyText: String!): Post
     addCharacter(characterName: String!, description: String!): Character
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
-    removeReply(post: ID!, commentId: ID!, replyId: ID!): Post
     removeCharacter(characterId: ID!): Character
 }
 

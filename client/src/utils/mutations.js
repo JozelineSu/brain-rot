@@ -33,11 +33,7 @@ export const ADD_POST = gql`
         createdAt
         comments {
             _id
-            commentText
-            replies {
-                _id
-                replyText
-            }
+            commentText 
         }
       }
     }
@@ -54,35 +50,9 @@ export const ADD_COMMENT  = gql `
                 _id
                 commentText
                 createdAt
-                replies {
-                    _id
-                    replytext
-                }
             }
         }
     }
-`;
-
-export const ADD_REPLY  = gql `
-    mutation addReply($postId: ID!, $commentId: ID!, $replyText: String!) {
-        addReply(postId: $postId, commentId: $commentId, replyText: $replyText) {
-            _id
-            postText
-            postAuthor
-            createdAt
-            comments {
-                _id
-                commentText
-                createdAt
-                replies {
-                    _id
-                    replyText
-                    createdAt
-                }
-            }
-        }
-    }
-
 `;
 
 export const ADD_CHARACTER = gql`

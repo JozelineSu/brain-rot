@@ -6,15 +6,18 @@ import CommentForm from '../components/CommentForm';
 
 import { QUERY_SINGLE_POST } from '../utils/queries';
 
-const Comments = () => {
+const SinglePost = () => {
     const { postId } = useParams();
-    console.log('post ID from url params: ', postId);
-    const { loading, data, error } = useQuery(QUERY_SINGLE_POST, {
+    console.log('single post page postID from url params: ', postId);
+
+    const { loading, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { postId: postId },
     });
-    console.log('Query result:', { loading, data, error});
 
+    
     const post = data?.post || {};
+console.log('data on comments page from running query single post:', post);
+ console.log('single post postId', post._id);  
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -29,7 +32,7 @@ const Comments = () => {
         
     
     )
-
+    
     }
     return (
         <>
@@ -60,4 +63,4 @@ const Comments = () => {
 
 
 
-export default Comments;
+export default SinglePost;

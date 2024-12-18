@@ -7,7 +7,7 @@ import SignUp from './pages/SignUp.jsx';
 import Discover from './pages/Discover.jsx';
 import Profile from './pages/Profile.jsx';
 import Rankings from './pages/Rankings.jsx';
-import Comments from './pages/Comments.jsx';
+import SinglePost from './pages/SinglePost.jsx';
 import CreatePost from './pages/CreatePost.jsx';
 import Characters from './pages/Characters.jsx';
 import Lists from './pages/Lists.jsx';
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/posts/:postId',
-        element: <Comments />
+        element: <SinglePost />
       },
       {
         path: '/createPost',
