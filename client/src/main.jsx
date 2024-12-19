@@ -6,6 +6,7 @@ import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import Discover from './pages/Discover.jsx';
 import Profile from './pages/Profile.jsx';
+import UserProfile from './pages/UserProfile.jsx';
 import Rankings from './pages/Rankings.jsx';
 import SinglePost from './pages/SinglePost.jsx';
 import CreatePost from './pages/CreatePost.jsx';
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
         element: <Login />
       },
       {
-        path: '/profile',
+        path: '/me',
+        element: <UserProfile />
+      },
+      {
+        path: '/profiles/:username',
         element: <Profile />
       },
       {

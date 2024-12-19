@@ -1,4 +1,3 @@
-import "../styles/Profile.css";
 import { Navigate, useParams, useSearchParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
@@ -8,7 +7,7 @@ import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
 import Auth from '../utils/auth';
 
-const Profile = () => {
+const UserProfile = () => {
     const { username: userParam } = useParams();
 
     const { loading, data, error} = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -46,5 +45,4 @@ const Profile = () => {
         </div>
     )
 }
-
-export default Profile;
+export default UserProfile;

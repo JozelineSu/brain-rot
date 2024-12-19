@@ -25,7 +25,7 @@ const userSchema = new Schema({
     posts: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Thought',
+            ref: 'post',
         }
     ],
     characters: [
@@ -34,9 +34,7 @@ const userSchema = new Schema({
             ref: 'Character',
         }
     ],
-    /*lists: [List.schema],
-    likes: [Post.schema],
-    */
+
 });
 // 
 /**(mongoose)pre middleware functions are executed one after another when each middlware calls next */
