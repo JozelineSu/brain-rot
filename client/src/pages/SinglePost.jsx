@@ -8,16 +8,12 @@ import { QUERY_SINGLE_POST } from '../utils/queries';
 
 const SinglePost = () => {
     const { postId } = useParams();
-    console.log('single post page postID from url params: ', postId);
 
     const { loading, data } = useQuery(QUERY_SINGLE_POST, {
         variables: { postId: postId },
     });
-
     
     const post = data?.post || {};
-console.log('data on comments page from running query single post:', post);
- console.log('single post postId', post._id);  
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -29,8 +25,6 @@ console.log('data on comments page from running query single post:', post);
                 <CommentForm postId={post._id}/>
         </div>    
             </>
-        
-    
     )
     
     }

@@ -9,6 +9,7 @@ import Profile from './pages/Profile.jsx';
 import UserProfile from './pages/UserProfile.jsx';
 import Rankings from './pages/Rankings.jsx';
 import SinglePost from './pages/SinglePost.jsx';
+import EditPost from './pages/EditPost.jsx';
 import CreatePost from './pages/CreatePost.jsx';
 import Characters from './pages/Characters.jsx';
 import Lists from './pages/Lists.jsx';
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: '/posts/:postId',
         element: <SinglePost />
+      },
+      {
+        path: '/userpost/:postId',
+        element: <EditPost />
       },
       {
         path: '/createPost',

@@ -35,8 +35,8 @@ function NavBar() {
             <img src={NavIcon} alt="Nav-Icon" width="50" height="56"/>
             </div>
             <div id="myDropdown" className='navbar-content'>
-                <Link className="nav-link" to="/discover">Discover</Link>
-                <Link className="nav-link" to="/profile">Profile</Link>
+                <Link className="nav-link" to="/">Discover</Link>
+                <Link className="nav-link" to="/me">Profile</Link>
                 <Link className="nav-link" to="/rankings">Rankings</Link>
                 <Link className="nav-link" to="/recommended">Recommended</Link>                
             </div>

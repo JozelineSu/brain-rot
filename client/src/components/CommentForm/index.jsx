@@ -25,7 +25,6 @@ const CommentForm = ({ postId }) => {
                     commentAuthor: Auth.getProfile().username
                 },
             });
-            console.log('Comment form mutation variables:', { postId, commentText, commentAuthor});
 
             setCommentText('');
         } catch (err) {

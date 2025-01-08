@@ -107,7 +107,7 @@ const resolvers = {
         },
         removePost: async (parent, { postId }, context) => {
             if (context.user) {
-                const post = await Thought.findOneAndDelete({
+                const post = await Post.findOneAndDelete({
                     _id: postId,
                     postAuthor: context.user.username,
                 });
@@ -115,6 +115,20 @@ const resolvers = {
                 await User.findOneAndUpdate(
                     { _id: context.user._id},
                     {$pull: { posts: post._id }}
+                );
+
+                return post;
+            }
+            throw AuthenticationError;
+        },
+        updatePost: async (parent, { postId, postText }, context) => {
+            if (context.user) {
+                const post = await Post.findOneAndUpdate(
+                    { _id: postId,
+                      postAuthor: context.user.username
+                    },
+                    { $set: {postText}},
+                    { new: true }
                 );
 
                 return post;
