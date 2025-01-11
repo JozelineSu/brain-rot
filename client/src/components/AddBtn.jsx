@@ -19,7 +19,7 @@ function AddBtn() {
     return ( 
     <div className="add-button">
         <div className="addBtn-nav">
-            <h1 className="characterBtn">Char</h1>
+            <Link to="/createCharacter" className="characterBtn">Character</Link>
             <h1 className="listBtn">List</h1>
             <Link to="/createPost"className="postBtn">Post</Link>
         </div>

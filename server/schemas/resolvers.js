@@ -135,6 +135,19 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
+        updateCharacter: async (parent, { characterId, characterName, description}, context) => {
+            if (context.user) {
+                const character = await Character.findOneAndUpdate(
+                    {_id: characterId,
+                    characterAuthor: context.user.username
+                    },
+                    { $set: {characterName, description}},
+                    { new: true }
+                );
+                return character;
+            }
+            throw AuthenticationError;
+        },
         removeCharacter: async (parent, { characterId }, context) => {
             if (context.user) {
                 const character = await Character.findOneAndDelete({
@@ -142,7 +155,7 @@ const resolvers = {
                     characterAuthor: context.user.username,
                 });
 
-                await User.findOneAndupdate(
+                await User.findOneAndUpdate(
                     {_id: context.user._id},
                     {$pull: { characters: character._id}}
                 );

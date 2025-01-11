@@ -45,8 +45,15 @@ export const REMOVE_POST = gql`
             _id
         }
     }
+`;
 
-`
+export const REMOVE_CHARACTER = gql`
+    mutation removeCharacter($characterId: ID!) {
+        removeCharacter(characterId: $characterId) {
+            _id
+        }
+    }
+`;
 
 export const UPDATE_POST = gql`
     mutation updatePost($postId: ID!, $postText: String!) {
@@ -61,7 +68,19 @@ export const UPDATE_POST = gql`
             }
         }
     }
-`
+`;
+
+export const UPDATE_CHARACTER = gql`
+    mutation updateCharacter($characterId: ID!, $description: String!, $characterName: String!) {
+        updateCharacter(characterId: $characterId, description: $description, characterName: $characterName) {
+            _id
+            description
+            characterName
+            characterAuthor
+            createdAt
+        }
+    }
+`;
 
 export const ADD_COMMENT  = gql `
     mutation addComment($postId: ID!, $commentText: String!) {

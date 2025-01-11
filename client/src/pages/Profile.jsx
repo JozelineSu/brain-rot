@@ -1,5 +1,5 @@
 import "../styles/Profile.css";
-import { Navigate, useParams, useSearchParams } from "react-router-dom";
+import { Navigate, useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import PostList from "../components/PostList";
@@ -38,6 +38,9 @@ const Profile = () => {
                     <h2>
                         Viewing {userParam ? `${user.username}'s` : 'your'} profile.
                     </h2>
+                    <Link to={`/characters/${user.username}`}>
+                        Characters
+                    </Link>
                     <PostList
                         posts={user.posts}
                     />

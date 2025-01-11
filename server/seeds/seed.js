@@ -1,12 +1,16 @@
 const db = require('../config/connection');
-const { User, Post} = require('../models');
+const { User, Post, Character} = require('../models');
 const userSeeds = require('./userSeeds.json');
 const postSeeds = require('./postSeeds.json');
+const characterSeeds = require('./characterSeeds.json');
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
   try {
     await cleanDB('Post', 'posts');
+
+    await cleanDB('Character', 'characters');
+
 
     await cleanDB('User', 'users');
 
@@ -19,6 +23,18 @@ db.once('open', async () => {
         {
           $addToSet: {
             posts: _id,
+          },
+        }
+      );
+    }
+
+    for (let i = 0; i < characterSeeds.length; i++) {
+      const { _id, characterAuthor } = await Character.create(characterSeeds[i]);
+      const user = await User.findOneAndUpdate(
+        { username: characterAuthor },
+        {
+          $addToSet: {
+            characters: _id,
           },
         }
       );

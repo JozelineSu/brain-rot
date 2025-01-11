@@ -2,8 +2,8 @@ import { Navigate, useParams, Link } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import AddBtn from "../components/AddBtn";
 
-import { QUERY_USER, QUERY_ME, QUERY_POSTS } from "../utils/queries";
-import { REMOVE_POST, UPDATE_POST } from "../utils/mutations";
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
+import { REMOVE_POST } from "../utils/mutations";
 
 import Auth from '../utils/auth';
 
@@ -49,11 +49,6 @@ const UserProfile = () => {
         }
     };
 
-
-    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-        return <Navigate to="/me" />;
-    }
-
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -71,6 +66,9 @@ const UserProfile = () => {
                     <h2>
                         Viewing {userParam ? `${user.username}'s` : 'your'} profile.
                     </h2>
+                    <Link to={`/myCharacters`}>
+                        Characters
+                    </Link>
                     {
                         user.posts.map((post) => (
                             <div key={post._id}>

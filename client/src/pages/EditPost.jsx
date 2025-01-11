@@ -1,25 +1,36 @@
 import { useQuery, useMutation } from "@apollo/client";
 import { useState } from 'react';
 
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { QUERY_SINGLE_POST } from "../utils/queries";
 import { UPDATE_POST } from "../utils/mutations.js";
 
 function EditPost() {
-    
     const [characterCount, setCharacterCount] = useState(0);
+    const [postText, setPostText] = useState("");
     const { postId } = useParams();
     const [updatePost] = useMutation(UPDATE_POST);
+    const navigate = useNavigate();
 
     const { loading, data } = useQuery(QUERY_SINGLE_POST, {
-        variables: { postId: postId },
+        variables: { postId },
+        onCompleted: (data) => {
+            setPostText(data.post.postText);
+            setCharacterCount(data.post.postText.length);
+        },
     });
     
     const post = data?.post || {};
     if (loading) {
         return <div>Loading...</div>
     }
+
+    const handleInputChange = (event) => {
+        const { value } = event.target;
+        setPostText(value);
+        setCharacterCount(value.length);
+    };
 
     const handleUpdatePost = async (event) => {
         event.preventDefault();
@@ -28,6 +39,7 @@ function EditPost() {
                 variables: { postId, postText},
             });
             console.log("post updated:", data);
+            navigate(`/me`);
         } catch (err) {
             console.error("error updating post:", err);
         }
@@ -54,9 +66,9 @@ function EditPost() {
                         <textarea
                             name="postText"
                             className="form-input"
-                            
-                            defaultValue={post.postText}
-                        ></textarea>
+                            value={postText}
+                            onChange={handleInputChange}
+                        >{post.postText}</textarea>
                     </div>
 
                     <div>

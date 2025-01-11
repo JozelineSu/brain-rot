@@ -35,7 +35,7 @@ const PostList = ({posts}) => {
                         </Link>
                      </div>
                      <div className="post-text">
-                        <p>{post.postText}</p>
+                        <p>{post.postText}</p>  
                      </div>
                      <div className="post-interactions">
                         <Link

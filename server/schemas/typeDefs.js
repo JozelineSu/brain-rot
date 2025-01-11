@@ -56,6 +56,7 @@ type Mutation {
     updatePost(postId: ID!, postText: String!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     removeCharacter(characterId: ID!): Character
+    updateCharacter(characterId: ID!, characterName: String!, description: String!): Character
 }
 
 `;
