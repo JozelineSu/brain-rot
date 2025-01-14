@@ -21,6 +21,15 @@ export const QUERY_USER = gql`
     }
 `;
 
+export const QUERY_TAGS = gql`
+    query getTags {
+        tags {
+            _id
+            name
+            createdAt
+        }
+    }
+`
 export const QUERY_POSTS = gql`
     query getPosts {
         posts {

@@ -36,8 +36,14 @@ const postSchema = new Schema (
                 default: Date.now,
                 get: (timestamp) => dateFormat(timestamp),
             },
-        },
-    ],  
+          },
+        ], 
+        tags: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Tag', // Reference to Tag model
+            },
+        ], 
 })
 
 const Post = model('post', postSchema);

@@ -40,7 +40,7 @@ function CreateCharacter() {
 
             setDescription('');
             setCharacterName('');
-            navigate('/');
+            navigate('/myCharacters');
         } catch (err) {
             console.error('Error making new post:', err);
         }

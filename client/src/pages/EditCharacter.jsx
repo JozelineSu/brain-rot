@@ -47,7 +47,7 @@ function EditCharacter() {
                 variables: { characterId, description, characterName},
             });
             console.log("characster updated:", data);
-            navigate(`/me`);
+            navigate('/myCharacters');
         } catch (err) {
             console.error("error updating character:", err);
         }
@@ -57,10 +57,10 @@ function EditCharacter() {
         <>
 
         <div >
-            <div className="header">
+            {/*<div className="header">
                 <h1>User Pic</h1>
                 <h1>{character.characterAuthor}</h1>
-            </div>
+            </div>*/}
             </div>
 
                 <p className={`${
