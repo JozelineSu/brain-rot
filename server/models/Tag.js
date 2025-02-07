@@ -1,18 +1,18 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
 
 const tagSchema = new Schema (
     {
-        name: {
+        tagText: {
             type: String,
             unique: true,
             trim: true,
         },
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: (timestamp) => dateFormat(timestamp),
-        }
+        posts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'post',
+            }
+        ],
     }
 )
 

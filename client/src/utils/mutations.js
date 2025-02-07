@@ -25,17 +25,16 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_TAG = gql`
-    mutation addTag($name: String!) {
-        addTag(name: $name) {
+    mutation addTag($tagText: String!) {
+        addTag(tagText: $tagText) {
             _id
-            name
-            createdAt
+            tagText
         }
     }
 `
 
 export const ADD_POST = gql`
-    mutation addPost($postText: String!, $tags: [String!]!) {
+    mutation addPost($postText: String!, $tags: [String]) {
         addPost(postText: $postText, tags: $tags) {
         _id
         postText
@@ -47,7 +46,7 @@ export const ADD_POST = gql`
         }
         tags {
             _id
-            name
+            tagText
         }
       }
     }
@@ -70,7 +69,7 @@ export const REMOVE_CHARACTER = gql`
 `;
 
 export const UPDATE_POST = gql`
-    mutation updatePost($postId: ID!, $postText: String!, $tags: [String!]!) {
+    mutation updatePost($postId: ID!, $postText: String!, $tags: [String]) {
         updatePost(postId: $postId, postText: $postText, tags: $tags) {
             _id
             postText
@@ -89,8 +88,8 @@ export const UPDATE_POST = gql`
 `;
 
 export const UPDATE_CHARACTER = gql`
-    mutation updateCharacter($characterId: ID!, $tags: [String!]!, $description: String!, $characterName: String!) {
-        updateCharacter(characterId: $characterId, tags: String!, description: $description, characterName: $characterName) {
+    mutation updateCharacter($characterId: ID!, $tags: [String], $description: String!, $characterName: String!) {
+        updateCharacter(characterId: $characterId, tags: $tags, description: $description, characterName: $characterName) {
             _id
             description
             characterName
@@ -121,7 +120,7 @@ export const ADD_COMMENT  = gql `
 `;
 
 export const ADD_CHARACTER = gql`
-    mutation addCharacter($characterName: String!, $description: String!, $tags: [String!]!) {
+    mutation addCharacter($characterName: String!, $description: String!, $tags: [String]) {
         addCharacter(characterName: $characterName, description: $description, tags: $tags) {
             _id
             characterName

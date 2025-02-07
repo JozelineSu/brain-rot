@@ -25,9 +25,14 @@ export const QUERY_TAGS = gql`
     query getTags {
         tags {
             _id
-            name
-            createdAt
-        }
+            tagText
+            posts {
+                _id
+                postText
+                postAuthor
+                createdAt
+            }
+        }    
     }
 `
 export const QUERY_POSTS = gql`
@@ -36,7 +41,11 @@ export const QUERY_POSTS = gql`
             _id
             postText
             postAuthor
-            createdAt
+            createdAt 
+            tags {
+                _id
+                tagText
+            }
         }
     }
 `;

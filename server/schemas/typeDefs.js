@@ -10,8 +10,8 @@ type User {
 
 type Tag {
     _id: ID
-    name: String
-    createdAt: String
+    tagText: String
+    posts: [Post]!
 }
 
 type Character {
@@ -20,7 +20,7 @@ type Character {
     description: String
     characterAuthor: String
     createdAt: String
-    tags: [Tag]!
+    tags: [Tag]
 }
 
 type Post {
@@ -29,7 +29,7 @@ type Post {
     postAuthor: String
     createdAt: String
     comments: [Comment]!
-    tags: [Tag]!
+    tags: [Tag]
 }
 
 type Comment {
@@ -58,15 +58,15 @@ type Query {
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addTag(tag: String!): Tag
-    addPost(postText: String!, tags: String!): Post
+    addTag(tagText: String!): Tag
+    addPost(postText: String!, tags: [String]): Post
     addComment(postId: ID!, commentText: String!): Post
-    addCharacter(characterName: String!, description: String!, tags: String!): Character
+    addCharacter(characterName: String!, description: String!, tags: [String]): Character
     removePost(postId: ID!): Post
-    updatePost(postId: ID!, postText: String!, tags: String!): Post
+    updatePost(postId: ID!, postText: String!, tags: [String]): Post
     removeComment(postId: ID!, commentId: ID!): Post
     removeCharacter(characterId: ID!): Character
-    updateCharacter(characterId: ID!, characterName: String!, description: String!, tags: String!): Character
+    updateCharacter(characterId: ID!, characterName: String!, description: String!, tags: [String]): Character
 }
 
 `;

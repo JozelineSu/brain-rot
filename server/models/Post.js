@@ -41,9 +41,9 @@ const postSchema = new Schema (
         tags: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Tag', // Reference to Tag model
-            },
-        ], 
+                ref: 'Tag',
+            }
+        ],
 })
 
 const Post = model('post', postSchema);

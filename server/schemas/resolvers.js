@@ -25,7 +25,7 @@ const resolvers = {
             return Character.findOne({ _id: characterId}).populate('tags');
         },
         tags: async () => {
-            return Tag.find();
+            return Tag.find().populate('posts');
         },
         me: async (parent, args, context) => {
             if (context.user) {
@@ -58,44 +58,51 @@ const resolvers = {
             return { token, user };
             
         },
-        addTag: async (parent, { name }, context) => {
-            const existingTag = await Tag.findOne({ name });
-
-            if (context.user && !existingTag) {
-               const newTag = await Tag.create({name});
-
-               return newTag;
-            } else if (context.user && existingTag) {
-                throw new Error('Tag already exists');
+        addTag: async (parent, { tagText }, context) => {
+            if (!tagText.trim()) {
+                throw new Error("Tag text cannot be empty");
             }
         
-            throw AuthenticationError;
+            const tag = await Tag.findOneAndUpdate(
+                { tagText: tagText.trim() }, // Find by tagText
+                { $setOnInsert: { tagText: tagText.trim() } }, // Only insert if it doesn’t exist
+                { new: true, upsert: true } // Return the document & create if not found
+            );
+        
+            return tag;
         },
-        addPost: async (parent, { postText, tags }, context) => {
-            if (context.user) {
-                const tagIds = await Promise.all(
-                    tags.map(async (tagName) => {
-                        let tag = await Tag.findOne({ name: tagName });
-                        if (!tag) {
-                            tag = await Tag.create({ name: tagName });
-                        }
-                        return tag._id;
-                    })
-                );
-                const post = await Post.create({
-                    postText,
-                    tags: tagIds,
-                    postAuthor: context.user.username,
-                });
+        
+        
+        addPost: async (parent, { postText, tags = [] }, context) => {
+            if (!context.user) throw AuthenticationError;
 
-                await User.findOneAndUpdate(
-                    {_id: context.user._id },
-                    { $addToSet: { posts: post._id} }
-                );
+            const tagIds = await Promise.all(
+                tags.map(async (tagName) => {
+                    let tag = await Tag.findOne({ tagText: tagName});
+                    if (!tag) {
+                        tag = await Tag.create({ tagText: tagName });
+                    }
+                    return tag._id;
+                })
+            );
 
-                return post;
-            }
-            throw AuthenticationError;
+            const post = await Post.create({
+                postText,
+                tags: tagIds,
+                postAuthor: context.user.username
+            });
+
+            await Tag.updateMany(
+                {_id: { $in: tagIds }},
+                { $addToSet: { posts: post._id}}
+            );
+
+            await User.findOneAndUpdate(
+                {_id: context.user._id},
+                {$addToSet: { posts: post._id}}
+            );
+
+            return post.populate("tags");
         },
         addComment: async (parent, { postId, commentText }, context) => {  
             if (context.user) {
@@ -114,7 +121,7 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
-        addCharacter: async (parent, { characterName, description, tags }, context) => {
+        addCharacter: async (parent, { characterName, description, tags = [] }, context) => {
             if (context.user) {
                 const tagIds = await Promise.all(
                     tags.map(async (tagName) => {
@@ -157,7 +164,7 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
-        updatePost: async (parent, { postId, postText, tags }, context) => {
+        updatePost: async (parent, { postId, postText, tags = []}, context) => {
             if (context.user) {
                 const tagIds = await Promise.all(
                     tags.map(async (tagName) => {
@@ -181,7 +188,7 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
-        updateCharacter: async (parent, { characterId, characterName, description, tags}, context) => {
+        updateCharacter: async (parent, { characterId, characterName, description, tags = []}, context) => {
             if (context.user) {
                 const tagIds = await Promise.all(
                     tags.map(async (tagName) => {

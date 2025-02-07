@@ -10,8 +10,7 @@ db.once('open', async () => {
     await cleanDB('Post', 'posts');
 
     await cleanDB('Character', 'characters');
-
-
+    await cleanDB('Tag', 'tags');
     await cleanDB('User', 'users');
 
     await User.create(userSeeds);

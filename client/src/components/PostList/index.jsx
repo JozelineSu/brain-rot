@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import NavBar from "../NavBar";
 import AddBtn from "../AddBtn";
+import Searchbar from "../Searchbar";
 
 const PostList = ({posts}) => {
     if (!posts.length) {
@@ -19,9 +20,7 @@ const PostList = ({posts}) => {
     return (
     <div className="discover">
         <NavBar/>
-       <div className="searchbar">
-            Search
-       </div>
+       <Searchbar/>
         <div>
         {posts &&
             posts.map((post) => (
@@ -36,6 +35,15 @@ const PostList = ({posts}) => {
                      </div>
                      <div className="post-text">
                         <p>{post.postText}</p>  
+                     </div>
+                     <div className="post-tags">
+                        {
+                            post.tags.map((tag) => (
+                                <div key={tag._id}>
+                                    <p>{tag.tagText}</p>
+                                </div>
+                            ))
+                        }
                      </div>
                      <div className="post-interactions">
                         <Link
