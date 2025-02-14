@@ -28,7 +28,7 @@ type Post {
     postText: String
     postAuthor: String
     createdAt: String
-    comments: [Comment]!
+    comments: [Comment]
     tags: [Tag]
 }
 
@@ -48,11 +48,12 @@ type Query {
     users: [User]    
     user(username: String!): User
     posts(username: String): [Post]
-    post(postId: ID!): Post
+    post(postId: ID): Post
     me: User
     characters(username: String!): [Character]
     character(characterId: ID!): Character
     tags: [Tag]
+    searchTags(tagText: String!): [Post]
 }
 
 type Mutation {

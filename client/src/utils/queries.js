@@ -35,6 +35,7 @@ export const QUERY_TAGS = gql`
         }    
     }
 `
+
 export const QUERY_POSTS = gql`
     query getPosts {
         posts {
@@ -63,7 +64,7 @@ export const QUERY_CHARACTERS  = gql`
 `
 
 export const QUERY_SINGLE_POST = gql`
-    query getSinglePost($postId: ID!) {
+    query getSinglePost($postId: ID) {
         post(postId: $postId) {
             _id
             postText
@@ -78,6 +79,23 @@ export const QUERY_SINGLE_POST = gql`
         }
     }
 `;
+
+export const SEARCH_TAGS = gql`
+    query searchTags($tagText: String!) {
+        searchTags(tagText: $tagText) {
+           
+                _id
+                postText
+                postAuthor
+                createdAt
+                tags {
+                    _id
+                    tagText
+                }
+            
+        }
+    }
+`
 
 export const QUERY_SINGLE_CHARACTER = gql`
     query getSingleCharacter($characterId: ID!) {

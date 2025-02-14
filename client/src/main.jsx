@@ -25,6 +25,8 @@ import NewList from './pages/NewList.jsx';
 import ListChoices from './pages/ListChoices.jsx'
 import Lists from './pages/Lists.jsx';
 
+import SearchResults from './components/SearchResults/index.jsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -45,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: '/me',
         element: <UserProfile />
+      },
+      {
+        path: '/search/:tagText',
+        element: <SearchResults/>
       },
       {
         path: '/profiles/:username',

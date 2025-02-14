@@ -10,7 +10,7 @@ const SinglePost = () => {
     const { postId } = useParams();
 
     const { loading, data } = useQuery(QUERY_SINGLE_POST, {
-        variables: { postId: postId },
+        variables: { postId: postId }
     });
     
     const post = data?.post || {};

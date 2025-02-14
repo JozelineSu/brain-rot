@@ -8,9 +8,7 @@ const PostList = ({posts}) => {
         return (
         <div>
             <NavBar/>
-            <div className="searchbar">
-                Search
-            </div>
+            <Searchbar/>
            <h3>No Posts Yet</h3>
            <AddBtn /> 
         </div>
@@ -19,8 +17,6 @@ const PostList = ({posts}) => {
 
     return (
     <div className="discover">
-        <NavBar/>
-       <Searchbar/>
         <div>
         {posts &&
             posts.map((post) => (
@@ -56,7 +52,6 @@ const PostList = ({posts}) => {
                 </div>
             ))
         }
-        <AddBtn/>
         </div>
         
     </div>

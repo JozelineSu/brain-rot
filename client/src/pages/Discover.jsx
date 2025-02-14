@@ -3,6 +3,10 @@ import { useQuery } from "@apollo/client";
 
 import PostList from "../components/PostList";
 
+import NavBar from "../components/NavBar";
+import AddBtn from "../components/AddBtn";
+import Searchbar from "../components/Searchbar";
+
 import { QUERY_POSTS } from '../utils/queries';
 import { useEffect } from "react";
 
@@ -16,17 +20,19 @@ const Discover = () => {
         
         return (
             <main>
+                <NavBar/>
+                <Searchbar/>
                 <div>
-                    <div>
-                        {loading ? (
-                            <div>Loading...</div>
-                        ) : (
-                            <PostList
-                                posts={posts}
-                            />
-                        )}
-                    </div>
+                    {loading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <PostList
+                            posts={posts}
+                        />
+                    )}
                 </div>
+                <AddBtn/>
+                
             </main>
     );
 };

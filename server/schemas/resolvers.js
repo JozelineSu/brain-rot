@@ -27,6 +27,29 @@ const resolvers = {
         tags: async () => {
             return Tag.find().populate('posts');
         },
+        searchTags: async (parent, { tagText }) => {
+            try {
+                const tag = await Tag.findOne({ tagText }).populate({
+                    path: "posts",
+                    populate: { path: "tags"}
+                });
+        
+                if (!tag) {
+                    console.log("no posts found");
+                    return { posts: [] }; // Return empty if no tag found
+                    
+                }
+
+                const validPosts = tag.posts?.filter(post => post) || [];
+
+                
+                return validPosts;
+            } catch (error) {
+                console.error("Error searching tags:", error);
+                throw new Error("Failed to fetch posts for the given tag");
+            }
+        },
+        
         me: async (parent, args, context) => {
             if (context.user) {
                 return User.findOne({ _id: context.user._id }).populate('posts').populate('characters');
