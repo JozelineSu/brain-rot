@@ -1,14 +1,25 @@
 import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_POSTS } from '../../utils/queries';
+import { useEffect } from "react";
+
 import NavBar from "../NavBar";
 import AddBtn from "../AddBtn";
-import Searchbar from "../Searchbar";
 
-const PostList = ({posts}) => {
+const PostList = () => {
+    const { loading, data, refetch} = useQuery(QUERY_POSTS);
+            const posts = data?.posts || [];
+    
+            useEffect(() => {
+                refetch();
+            }, []);
+
+
+
     if (!posts.length) {
         return (
         <div>
             <NavBar/>
-            <Searchbar/>
            <h3>No Posts Yet</h3>
            <AddBtn /> 
         </div>

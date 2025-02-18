@@ -4,10 +4,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.title,
-form {
+    background-color: rgb(140, 253, 210);
+    border-radius: 15px;
+    border-left: 10px solid rgb(140, 253, 210);
+    border-right: 10px solid rgb(140, 253, 210);
+    border-bottom: 10px solid rgb(140, 253, 210);
     color: rgb(59, 5, 70);  
 }
 
@@ -16,10 +17,14 @@ form {
     background-color: rgb(140, 253, 210);
     line-height: inherit;
     font-weight: 800; 
-    font-size: 3rem;
-    margin: 0;
-    padding-bottom: 12px;
-    letter-spacing: .5rem;
+    font-size: 3.5rem;
+    letter-spacing: .4rem;
+    border-radius: 15px;
+}
+
+.container {
+    background-color: white;
+    border-radius: 15px;
 }
 
 h2 {
@@ -27,41 +32,58 @@ h2 {
 }
 
 form {
-    background-color: white;
-    border: 15px solid rgb(140, 253, 210);
-    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
-form ul {
-    font-size: 2rem;
-}
-form li {
-    list-style: none;
+form div {
+    margin: 15px;
     display: flex;
     justify-content: space-between;
-    padding: 30px;
+    margin: 5px;
 }
 
 input {
-    width: 50%;
+    width: 60%;
     border: solid 1px rgb(59, 5, 70); 
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px grey;
+    margin-right: 10%;
 }
 
-button {
-    font-size: 1rem;
+label {
+    margin-left: 10%;
+}
+
+.btn-container {
+    flex-direction: row;
+    justify-content: end;
+    padding: 10px;
+}
+
+button:hover {
     box-shadow: 0px 0px 10px grey;
+    cursor: pointer;
+}
+
+button link {
+    font-size: 1rem;
     border-radius: 5px;
     width: 15%;
-    margin: 10px;
-    transform: translate(200%, 50%);
     border: solid 1px rgb(59, 5, 70); 
+    border-radius: 15px;
 }
 
 .loginbtn {
     background-color: rgb(59, 5, 70);
     color: rgb(140, 253, 210);
+    margin-right: 5%;
+    border-radius: 5px;
+}
+
+.signupbtn {
+    background-color: white;
+    border-radius: 5px;
 }
 
 

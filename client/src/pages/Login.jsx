@@ -45,8 +45,9 @@ const Login = (props) => {
         <main className="login">
             <div>{/*action is location URL data is sent method is HTTP method to send data usually GET or POST */}
                 <h1 className='title'>BrainRot</h1> 
-                <h2>Login</h2>
-                <div>
+                
+                <div className='container'>
+                    <h2>Login</h2>
                     {data ? (
                         <p>
                             You're logged in! You may now head{' '}
@@ -54,31 +55,38 @@ const Login = (props) => {
                         </p>
                     ) : (
                         <form onSubmit={handleFormSubmit}>
-                            <label>Email:</label>
-                            <input
-                                className="form-input"
-                                name="email"
-                                type="email"
-                                value={formState.email}
-                                onChange={handleChange}
-                            />
-                            <label>Password:</label>
-                            <input
-                                className="form-input"
-                                name="password"
-                                type="password"
-                                value={formState.password}
-                                onChange={handleChange}
-                            />
-                            <button
-                                className='loginbtn' 
-                                type='submit'
-                            >
-                                Login
-                            </button>
-                            <Link to="/signup">
-                                <button className='signupbtn'>Sign Up</button>
-                            </Link>
+                            <div>
+                                <label>Email:</label>
+                                <input
+                                    className="form-input"
+                                    name="email"
+                                    type="email"
+                                    value={formState.email}
+                                    onChange={handleChange}
+                                />   
+                            </div>
+                            <div>
+                                <label>Password:</label>
+                                <input
+                                    className="form-input"
+                                    name="password"
+                                    type="password"
+                                    value={formState.password}
+                                    onChange={handleChange}
+                                />  
+                            </div>
+                            <div className='btn-container'>
+                                <button
+                                    className='loginbtn' 
+                                    type='submit'
+                                >
+                                    Login
+                                </button>
+                                <Link to="/signup">
+                                    <button className='signupbtn'>Sign Up</button>
+                                </Link>   
+                            </div>
+                            
                         </form>
                     )}
 

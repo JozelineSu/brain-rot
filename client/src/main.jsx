@@ -5,7 +5,6 @@ import App from './App.jsx';
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 
-import Rankings from './pages/Rankings.jsx';
 import Discover from './pages/Discover.jsx';
 import SinglePost from './pages/SinglePost.jsx';
 
@@ -20,10 +19,6 @@ import UserCharacters from './pages/UserCharacters.jsx';
 
 import CreatePost from './pages/CreatePost.jsx';
 import CreateCharacter from './pages/CreateCharacter.jsx';
-
-import NewList from './pages/NewList.jsx';
-import ListChoices from './pages/ListChoices.jsx'
-import Lists from './pages/Lists.jsx';
 
 import SearchResults from './components/SearchResults/index.jsx';
 
@@ -65,10 +60,6 @@ const router = createBrowserRouter([
         element: <Characters />
       },
       {
-        path: '/rankings',
-        element: <Rankings />
-      },
-      {
         path: '/posts/:postId',
         element: <SinglePost />
       },
@@ -85,21 +76,9 @@ const router = createBrowserRouter([
         element: <CreatePost />
       },
       {
-        path: '/lists',
-        element: <Lists />
-      },
-      {
         path: '/createCharacter',
         element: <CreateCharacter />
       },
-      {
-        path: '/newList',
-        element: <NewList />
-      },
-      {
-        path: '/listChoices',
-        element: <ListChoices />
-      }
     ]
   },
 ])

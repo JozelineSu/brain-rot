@@ -1,39 +1,50 @@
 import "../styles/Discover.css";
-import { useQuery } from "@apollo/client";
-
+import SearchResults from "../components/SearchResults";
 import PostList from "../components/PostList";
-
 import NavBar from "../components/NavBar";
 import AddBtn from "../components/AddBtn";
-import Searchbar from "../components/Searchbar";
 
-import { QUERY_POSTS } from '../utils/queries';
-import { useEffect } from "react";
+import { useLazyQuery } from "@apollo/client";
+import { useState } from "react";
+import { SEARCH_TAGS } from "../utils/queries";
 
 const Discover = () => {
-        const { loading, data, refetch} = useQuery(QUERY_POSTS);
-        const posts = data?.posts || [];
+    const [searchInput, setSearchInput] = useState("");
+    const [search, {loading, data, error}] = useLazyQuery(SEARCH_TAGS);
+    
+    const posts = data?.searchTags || [];
 
-        useEffect(() => {
-            refetch();
-        }, []);
+    const handleSearch = async (event) => {
+        event.preventDefault();
+
+        search({ variables: {tagText: searchInput}});
+    }
         
-        return (
-            <main>
-                <NavBar/>
-                <Searchbar/>
-                <div>
-                    {loading ? (
-                        <div>Loading...</div>
-                    ) : (
-                        <PostList
-                            posts={posts}
-                        />
-                    )}
-                </div>
-                <AddBtn/>
-                
-            </main>
+    return (
+        <main>
+            <NavBar/>
+            <form onSubmit={handleSearch}>
+                <input
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                    type="text"
+                    placeholder="Search..."
+                ></input>
+                <button type='submit'>
+                    Search
+                </button>
+            </form>
+
+            <div>
+                {posts.length ? (
+                    <SearchResults posts={posts}/>
+                ) : (
+                    <PostList/>
+                )
+                }              
+            </div>
+            <AddBtn/>     
+        </main>
     );
 };
 

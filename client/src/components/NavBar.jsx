@@ -36,9 +36,7 @@ function NavBar() {
             </div>
             <div id="myDropdown" className='navbar-content'>
                 <Link className="nav-link" to="/">Discover</Link>
-                <Link className="nav-link" to="/me">Profile</Link>
-                <Link className="nav-link" to="/rankings">Rankings</Link>
-                <Link className="nav-link" to="/recommended">Recommended</Link>                
+                <Link className="nav-link" to="/me">Profile</Link>               
             </div>
         </div>
     )
