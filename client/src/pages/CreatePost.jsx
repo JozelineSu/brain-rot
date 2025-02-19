@@ -7,7 +7,6 @@ import { ADD_POST, ADD_TAG } from '../utils/mutations';
 import { QUERY_POSTS, QUERY_ME, QUERY_USER, QUERY_TAGS } from '../utils/queries';
 
 import Auth from '../utils/auth';
-import { storeValueIsStoreObject } from '@apollo/client/cache/inmemory/helpers';
 
 function CreatePost() {
     const [postText, setPostText] = useState('');

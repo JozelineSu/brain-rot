@@ -1,10 +1,6 @@
 .add-button {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    transform: translate(1050px, 660px);
-    position: relative;
-    width: fit-content;
+    translate: 1415px -150px;
+    overflow: visible;
 }
 
 .addBtn-nav {
@@ -16,19 +12,21 @@
 
 .addBtn-nav.show {
     opacity: 1;
-
 }
+
 
 .addBtn-nav h1 {
     margin: 10px;
 }
 
 .characterBtn {
-    transform: translateX(90px);
+    position: fixed;
+    translate: -90px 55px;
 }
 
-.listBtn {
-    transform: translateY(-15px);
+.postBtn {
+    position: fixed;
+    translate: 13px -48px;
 }
 
 .add-post {
@@ -43,4 +41,5 @@
     justify-content: center;
     align-items: center;
     margin: 0px;
+    z-index: 1;
 }

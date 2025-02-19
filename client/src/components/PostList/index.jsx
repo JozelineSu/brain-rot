@@ -1,7 +1,9 @@
+import "../../styles/PostList.css";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_POSTS } from '../../utils/queries';
 import { useEffect } from "react";
+import CommentIcon from "../../images/comment_icon.png";
 
 import NavBar from "../NavBar";
 import AddBtn from "../AddBtn";
@@ -27,14 +29,14 @@ const PostList = () => {
     }
 
     return (
-    <div className="discover">
-        <div>
+    
+        <div className='posts'> 
         {posts &&
             posts.map((post) => (
-                <div key={post._id}>
+                <div key={post._id} className="post-content">
                      <div className="username">
                         <Link
-                        className="username"
+                        className="username-link"
                         to={`/profiles/${post.postAuthor}`}
                         >
                             {post.postAuthor}
@@ -46,8 +48,8 @@ const PostList = () => {
                      <div className="post-tags">
                         {
                             post.tags.map((tag) => (
-                                <div key={tag._id}>
-                                    <p>{tag.tagText}</p>
+                                <div key={tag._id} className="tag">
+                                    <p>#{tag.tagText},</p>
                                 </div>
                             ))
                         }
@@ -56,16 +58,17 @@ const PostList = () => {
                         <Link
                             className="commentBtn"
                             to={`/posts/${post._id}`}
-                        >Comment 
+                        >
+                            <img src={CommentIcon} width="40"/>
+                            
                         </Link>
-                        <p>heart</p>
                      </div>
                 </div>
             ))
         }
         </div>
         
-    </div>
+    
 );
 }
 

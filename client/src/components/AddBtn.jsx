@@ -1,27 +1,23 @@
 import "../styles/AddBtn.css";
 import { Link } from "react-router-dom";
-/*
- i want user to click button then it will display option to user: character icon (to add facorite character), list icon (to add list), post icon (to add post)
+import PostIcon from "../images/post_icon.png";
+import CharIcon from "../images/char_icon.png";
 
- 1. click functionality
- 2. create navbar
- 3. two classes for navbar 
-   - one opacity 0
-   - other opacity 1
-
-*/
 function AddBtn() {
     const buttonNav = () => {
         document.querySelector(".addBtn-nav").classList.toggle("show");
-    
     }
 
     return ( 
     <div className="add-button">
         <div className="addBtn-nav">
-            <Link to="/createCharacter" className="characterBtn">Character</Link>
-            <h1 className="listBtn">List</h1>
-            <Link to="/createPost"className="postBtn">Post</Link>
+            <Link to="/createCharacter" className="characterBtn">
+                <img src={CharIcon} alt="Nav-Icon" width="75"/>
+            </Link>
+            <Link to="/createPost" className="postBtn">
+                <img src={PostIcon} alt="Nav-Icon" width="75"/>
+            
+            </Link>
         </div>
         <div>
           <h1 onClick={buttonNav} className="add-post">+</h1>  

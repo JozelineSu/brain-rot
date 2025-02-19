@@ -54,7 +54,7 @@ const Login = (props) => {
                             <Link to="/">back to homepage</Link>
                         </p>
                     ) : (
-                        <form onSubmit={handleFormSubmit}>
+                        <form className="login-form" onSubmit={handleFormSubmit}>
                             <div>
                                 <label>Email:</label>
                                 <input
@@ -65,6 +65,7 @@ const Login = (props) => {
                                     onChange={handleChange}
                                 />   
                             </div>
+
                             <div>
                                 <label>Password:</label>
                                 <input
@@ -75,18 +76,15 @@ const Login = (props) => {
                                     onChange={handleChange}
                                 />  
                             </div>
+
                             <div className='btn-container'>
-                                <button
-                                    className='loginbtn' 
-                                    type='submit'
-                                >
+                                <button className='loginbtn' type='submit'>
                                     Login
                                 </button>
                                 <Link to="/signup">
                                     <button className='signupbtn'>Sign Up</button>
                                 </Link>   
                             </div>
-                            
                         </form>
                     )}
 

@@ -42,8 +42,9 @@ const SignUp = () => {
     return (
         <main className="login">
             <h1 className='title'>BrainRot</h1> 
-            <h2>Sign Up</h2>
-            <div>
+            
+            <div className='container'>
+                <h2>Sign Up</h2>
                 {data ? (
                     <p>
                         You're logged in! You may now head{' '}
@@ -51,36 +52,46 @@ const SignUp = () => {
                     </p>
                 ) : (
                     <form onSubmit={handleFormSubmit}>
-                        <label>Username:</label>
-                        <input
-                            className="form-input"
-                            name="username"
-                            type="text"
-                            value={formState.name}
-                            onChange={handleChange}
-                        />
-                        <label>Email:</label>
-                        <input
-                            className="form-input"
-                            name="email"
-                            type="email"
-                            value={formState.email}
-                            onChange={handleChange}
-                        />
-                        <label>Password:</label>
-                        <input
-                            className="form-input"
-                            name="password"
-                            type="password"
-                            value={formState.password}
-                            onChange={handleChange}
-                        />
-                        <button
-                            className='loginbtn' 
-                            type='submit'
-                        >
-                            Sign Up
-                        </button>
+                        <div>
+                            <label>Username:</label>
+                            <input
+                                className="form-input"
+                                name="username"
+                                type="text"
+                                value={formState.name}
+                                onChange={handleChange}
+                            />   
+                        </div>
+                        <div>
+                            <label>Email:</label>
+                            <input
+                                className="form-input"
+                                name="email"
+                                type="email"
+                                value={formState.email}
+                                onChange={handleChange}
+                            />    
+                        </div>
+                        <div>
+                            <label>Password:</label>
+                            <input
+                                className="form-input"
+                                name="password"
+                                type="password"
+                                value={formState.password}
+                                onChange={handleChange}
+                            />   
+                        </div>
+                        <div className='btn-container' 
+>
+                            <button
+                                type='submit'
+                                className='loginbtn'
+                            >
+                                Sign Up
+                            </button>    
+                        </div>
+                        
                 </form>
                 )}  
 

@@ -1,10 +1,5 @@
 .navbar {
-    width: 5%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    padding-top: 15px;
-    padding-left: 15px;
+    padding-top: 7px;
 }
 
 .sidebar {
@@ -13,10 +8,6 @@
     width: 20%;
     display: flex;
     z-index: 1;
-}
-
-.dropbtn {
-    margin: 0px;
 }
 
 .navbar-content {
@@ -31,6 +22,7 @@
     padding-left: 25px;
     padding-top: 40px;
     margin-top: 30px;
+    height: 100vh;
 }
 
 .nav-link {

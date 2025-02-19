@@ -32,7 +32,7 @@ function NavBar() {
     return (
         <div className='navbar'>
             <div onClick={showNav} className='dropbtn'>
-            <img src={NavIcon} alt="Nav-Icon" width="50" height="56"/>
+                <img src={NavIcon} alt="Nav-Icon" width="50" height="56"/>
             </div>
             <div id="myDropdown" className='navbar-content'>
                 <Link className="nav-link" to="/">Discover</Link>

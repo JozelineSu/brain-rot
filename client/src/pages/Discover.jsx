@@ -1,4 +1,5 @@
 import "../styles/Discover.css";
+import SearchIcon from '../images/search_icon.png';
 import SearchResults from "../components/SearchResults";
 import PostList from "../components/PostList";
 import NavBar from "../components/NavBar";
@@ -21,29 +22,34 @@ const Discover = () => {
     }
         
     return (
-        <main>
-            <NavBar/>
-            <form onSubmit={handleSearch}>
-                <input
-                    value={searchInput}
-                    onChange={(e) => setSearchInput(e.target.value)}
-                    type="text"
-                    placeholder="Search..."
-                ></input>
-                <button type='submit'>
-                    Search
-                </button>
-            </form>
+        <main className="discover">
+            <div className="nav-search-container">
+                <NavBar/>
+                <form onSubmit={handleSearch}>
+                    <input
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+                        type="text"
+                        placeholder="Search..."
+                    ></input>
+                    <button type='submit'>
+                        <img src={SearchIcon} width="30"/>
+                    </button>
+                </form>    
+            </div>
+            
 
-            <div>
+            <div className="posts-container">
                 {posts.length ? (
                     <SearchResults posts={posts}/>
                 ) : (
                     <PostList/>
                 )
-                }              
+                }  
+                
+                <AddBtn/>               
             </div>
-            <AddBtn/>     
+                
         </main>
     );
 };
