@@ -1,4 +1,4 @@
-import '../styles/EditCharacter.css';
+
 import { useQuery, useMutation } from "@apollo/client";
 import { useState } from 'react';
 
@@ -54,45 +54,46 @@ function EditCharacter() {
     };
 
     return (
-        <>
-
-        <div >
-            {/*<div className="header">
-                <h1>User Pic</h1>
-                <h1>{character.characterAuthor}</h1>
-            </div>*/}
-            </div>
+        <div className="create-post">
 
                 <p className={`${
-                    characterCount === 120 
+                    characterCount === 280 
                     }`}
                 >
-                    CharacterCount: {characterCount}/120
+                    CharacterCount: {characterCount}/280
                 </p>
-                <form className='character-form' onSubmit={handleUpdateCharacter}>
-                    <div>
-                        <textarea
-                            name="description"
-                            className="form-input"
-                            value={description}
-                            onChange={handleDescChange}
-                        >{character.description}</textarea>
-                        <textarea
-                            name="characterName"
-                            className="form-input"
-                            value={characterName}
-                            onChange={handleCharNameChange}
-                        >{character.characterName}</textarea>
+                <form className='post-form' onSubmit={handleUpdateCharacter}>
+                    <div className="addChar-container">
+                        <div className="addChar-inputBox">
+                            <h2>Character Name:</h2>
+                            <textarea
+                                name="characterName"
+                                className="charName-input"
+                                value={characterName}
+                                onChange={handleCharNameChange}
+                            >{character.characterName}</textarea> 
+                              
+                        </div>
+
+                        <div className="addChar-inputBox">
+                            <h2>Description:</h2>
+                            <textarea
+                                name="description"
+                                className="description-input"
+                                value={description}
+                                onChange={handleDescChange}
+                            >{character.description}</textarea>    
+                        </div>
                     </div>
 
-                    <div>
-                        <button className="btn" type="submit">
-                            Update
+                    <div className="add-postContainer">
+                        <button className="add-postBtn" type="submit">
+                            +
                         </button>
                     </div>
                 </form>
 
-        </>
+        </div>
     )
     
 }

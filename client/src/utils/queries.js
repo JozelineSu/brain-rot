@@ -76,6 +76,10 @@ export const QUERY_SINGLE_POST = gql`
                 commentAuthor
                 createdAt
             }
+            tags {
+                _id
+                tagText
+            }
         }
     }
 `;

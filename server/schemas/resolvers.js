@@ -181,9 +181,9 @@ const resolvers = {
             if (context.user) {
                 const tagIds = await Promise.all(
                     tags.map(async (tagName) => {
-                        let tag = await Tag.findOne({ name: tagName });
+                        let tag = await Tag.findOne({ tagText: tagName});
                         if (!tag) {
-                            tag = await Tag.create({ name: tagName });
+                            tag = await Tag.create({ tagText: tagName});
                         }
                         return tag._id;
                     })

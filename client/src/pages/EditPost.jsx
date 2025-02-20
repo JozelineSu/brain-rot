@@ -1,27 +1,68 @@
 import { useQuery, useMutation } from "@apollo/client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useParams, useNavigate } from "react-router-dom";
 
-import { QUERY_SINGLE_POST } from "../utils/queries";
-import { UPDATE_POST } from "../utils/mutations.js";
+import { QUERY_SINGLE_POST, QUERY_TAGS } from "../utils/queries";
+import { UPDATE_POST, ADD_TAG } from "../utils/mutations.js";
 
 function EditPost() {
-    const [characterCount, setCharacterCount] = useState(0);
-    const [postText, setPostText] = useState("");
-    const { postId } = useParams();
     const [updatePost] = useMutation(UPDATE_POST);
     const navigate = useNavigate();
 
-    const { loading, data } = useQuery(QUERY_SINGLE_POST, {
+    const [postText, setPostText] = useState("");
+
+    const {tagData} = useQuery(QUERY_TAGS);
+    const existingTags = tagData?.tags.map(tag => tag.tagText) || [];
+
+    const [tagInput, setTagInput] = useState("");
+    const [tags, setTags] = useState([]);
+
+    const [addTag] = useMutation(ADD_TAG, {
+        refetchQueries: [{query: QUERY_TAGS}]
+    });
+
+    const handleAddTag = async (event) => {
+        event.preventDefault();
+        if (!tagInput.trim()) return;
+
+        if (!existingTags.includes(tagInput) && !tags.includes(tagInput)) {
+            try {
+                const {data} = await addTag({
+                    variables: {tagText: tagInput}
+                });
+                
+                setTags([...tags, tagInput]);
+                setTagInput("");
+                console.log("success adding new tag:", data);
+            } catch (error) {
+                console.error("error adding tag:", error);
+            } 
+        } 
+
+        if (!tags.includes(tagInput)) {
+            setTags([...tags, tagInput]);
+        }
+        
+    }   
+
+    const { postId } = useParams();
+    
+    const { loading, data, refetch } = useQuery(QUERY_SINGLE_POST, {
         variables: { postId },
         onCompleted: (data) => {
             setPostText(data.post.postText);
-            setCharacterCount(data.post.postText.length);
+            setTags(data.post.tags ? data.post.tags.map(tag => tag.tagText) : []);
         },
     });
+
+    useEffect(() => {
+            refetch();
+        }, []);
     
     const post = data?.post || {};
+    console.log('post data:', post);
+    
     if (loading) {
         return <div>Loading...</div>
     }
@@ -29,14 +70,13 @@ function EditPost() {
     const handleInputChange = (event) => {
         const { value } = event.target;
         setPostText(value);
-        setCharacterCount(value.length);
     };
 
     const handleUpdatePost = async (event) => {
         event.preventDefault();
         try {
             const { data } = await updatePost({
-                variables: { postId, postText},
+                variables: { postId, postText, tags},
             });
             console.log("post updated:", data);
             navigate(`/me`);
@@ -46,39 +86,45 @@ function EditPost() {
     };
 
     return (
-        <>
-
-        <div className="header">
-            <div>
-                <h1>User Pic</h1>
-                <h1>{post.postAuthor}</h1>
-            </div>
-            </div>
-
-                <p className={`${
-                    characterCount === 280 
-                    }`}
-                >
-                    CharacterCount: {characterCount}/280
-                </p>
-                <form className='post-form' onSubmit={handleUpdatePost}>
+        <div className="create-post">
+                <form className='create-post' onSubmit={handleUpdatePost}>
                     <div>
                         <textarea
                             name="postText"
-                            className="form-input"
+                            className="postText-input"
                             value={postText}
                             onChange={handleInputChange}
                         >{post.postText}</textarea>
                     </div>
+                    <div className='tag-form'>
+                                <div className='add-tag'>
+                                    <input
+                                        type="text"
+                                        value={tagInput}
+                                        onChange={(e) => setTagInput(e.target.value)}
+                                        placeholder='Add tags'
+                                    ></input>
+                                    <button className='add-tagBtn'onClick={handleAddTag}>+</button>
+                                </div>
 
-                    <div>
-                        <button className="btn" type="submit">
-                            Update
+                                <div className="display-tags">
+                                    
+                                    {tags.map((tag, index) => (
+                                        <span key={index} className='tag-createPost'>
+                                            {tag} <button className='remove-tagBtn' onClick={() => setTags(tags.filter(t => t !==tag))}>x</button>
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                    
+                    <div classsName='add-postContainer'>
+                        <button className="add-postBtn" type="submit">
+                            +
                         </button>
                     </div>
                 </form>
 
-        </>
+        </div>
     )
     
 }

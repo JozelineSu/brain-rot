@@ -7,6 +7,7 @@ import PostList from "../components/PostList";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
 import Auth from '../utils/auth';
+import NavBar from "../components/NavBar";
 
 const Profile = () => {
     const { username: userParam } = useParams();
@@ -41,6 +42,7 @@ const Profile = () => {
                     <Link to={`/characters/${user.username}`}>
                         Characters
                     </Link>
+                    
                     <PostList
                         posts={user.posts}
                     />

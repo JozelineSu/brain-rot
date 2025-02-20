@@ -34,17 +34,17 @@ const CommentForm = ({ postId }) => {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        if (name === 'commentText' && value.length <= 200) {
+        if (name === 'commentText' && value.length <= 280) {
             setCommentText(value);
             setCharacterCount(value.length);
         }
     };
 
     return (
-        <div>
+        <div className="commentForm-container">
             {
                 Auth.loggedIn() ? (
-                    <>
+                    <div className="comment-form">
                         <p className={`${
                             characterCount === 280 || error ? 'text-danger' : ''
                         }`}
@@ -52,24 +52,25 @@ const CommentForm = ({ postId }) => {
                             Character Count: {characterCount}/280
                             {error && <span className="comment-error">{error.message}</span>}
                         </p>
-                        <form className="comment-form" onSubmit={handleFormSubmit}>
-                            <div>
+                        
+                        <form className="add-comment" onSubmit={handleFormSubmit}>
+                            
                                 <textarea
                                     name="commentText"
                                     placeholder="Add your comment..."
                                     value={commentText}
-                                    className="form-input"
+                                    className="comment-input"
                                     onChange={handleChange}
                                 ></textarea>
-                            </div>
+                            
 
-                            <div>
-                                <button className="submit-btn" type="submit">
+                            
+                                <button className="commentBtn" type="submit">
                                     +
                                 </button>
-                            </div>
+                            
                         </form>
-                    </>
+                    </div>
                 ) : (
                     <p>
                         Please login to join the conversation! {' '}

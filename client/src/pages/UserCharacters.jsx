@@ -70,10 +70,12 @@ function UserCharacters() {
 
     return (
         <div>
-            <NavBar />
-            <h2 className='banner'>
-                    Viewing {userParam ? `${user.username}'s` : 'your'} characters
-            </h2>
+            
+            <div className='nav-search-container'>
+                <NavBar />
+                <h2 className="charProfile-title">Viewing {userParam ? `${user.username}'s` : 'your'} characters
+                </h2>
+            </div>
             <div className="current-characters">
                 {user.characters.map((character) => (
                  <div key={character._id} className="character-card">

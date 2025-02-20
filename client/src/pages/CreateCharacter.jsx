@@ -74,7 +74,7 @@ function CreateCharacter() {
                 </div>
 
                 <p className={`${
-                    characterCount === 120 || error ? 'text-danger' : ''
+                    characterCount === 280 || error ? 'text-danger' : ''
                 }`}
                 >
                 CharacterCount: {characterCount}/280

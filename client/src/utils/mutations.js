@@ -81,7 +81,7 @@ export const UPDATE_POST = gql`
             }
             tags {
                 _id
-                name
+                tagText
             }
         }
     }

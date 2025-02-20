@@ -19,39 +19,42 @@ const SinglePost = () => {
     }
     if (!post.comments.length) {
         return (
-            <>
-        <h3>No comments</h3>
-        <div>
-                <CommentForm postId={post._id}/>
-        </div>    
-            </>
+            <div className='comment-section'>
+                <h3>No comments</h3>
+
+                
+                        <CommentForm postId={post._id}/>
+                   
+            </div>
     )
     
     }
     return (
-        <>
-        
         <div className='comment-section'>
-            {
-                post.comments.map((comment) => (
-                    <div key={comment._id}>
-                        <div className="comment-card">
-                            <h4 className="comment-user">
-                                {comment.commentAuthor}
-                            </h4>
-                            <p className="comment-text">
-                                {comment.commentText}
-                            </p>
+            <div className="comments-display">
+                {
+                    post.comments.map((comment) => (
+                        <div className='user-comment' key={comment._id} >
+                            
+                                <h4 className="comment-user">
+                                    {comment.commentAuthor}
+                                </h4>
+                                <p className="comment-text">
+                                    {comment.commentText}
+                                </p>
+                            
                         </div>
-                    </div>
 
-                ))
-            }
-            <div>
-                <CommentForm postId={post._id}/>
+                    ))
+                }
             </div>
+            
+                
+                
+                    <CommentForm postId={post._id}/>
+                
+            
         </div>
-        </>
     )
 }
 
