@@ -4,6 +4,7 @@ import AddBtn from "../components/AddBtn";
 
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import { REMOVE_POST } from "../utils/mutations";
+import "../styles/Profile.css";
 
 import Auth from '../utils/auth';
 
@@ -60,37 +61,38 @@ const UserProfile = () => {
     }
 
     return (
-        <div>
-            <div>
-                <div>
-                    <h2>
-                        Viewing {userParam ? `${user.username}'s` : 'your'} profile.
-                    </h2>
-                    <Link to={`/myCharacters`}>
-                        Characters
-                    </Link>
-                    {
-                        user.posts.map((post) => (
-                            <div key={post._id}>
-                                <div className="post-date">
-                                    <p>{post.createdAt}</p>
+                <div className="profile">
+                    <div className="profile-banner">
+                        <h2>
+                            Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+                        </h2>
+                        <Link to={`/myCharacters`} className="charPage-link">
+                            View Characters
+                        </Link>  
+                    </div>
+                    <div className="user-posts">
+                        {
+                            user.posts.map((post) => (
+                                <div className="user-content" key={post._id}>
+                                    <div className="post-date">
+                                        <p>Made: {post.createdAt}</p>
+                                    </div>
+                                    <div className="post-text">
+                                        <p>{post.postText}</p>
+                                    </div>
+                                    <div className="user-post-btns">
+                                        <button className="edit-btn">
+                                            <Link to={`/userpost/${post._id}`}>Edit</Link>
+                                        </button>
+                                        <button className="del-btn" onClick={() => handleRemovePost(post._id)}>Delete</button>
+                                    </div>
                                 </div>
-                                <div className="post-text">
-                                    <p>{post.postText}</p>
-                                </div>
-                                <div className="user-post-btns">
-                                    <button>
-                                        <Link to={`/userpost/${post._id}`}>Edit</Link>
-                                    </button>
-                                    <button onClick={() => handleRemovePost(post._id)}>Delete</button>
-                                </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }    
+                    </div>
                     <AddBtn />
                 </div>
-            </div>
-        </div>
+            
     )
 }
 export default UserProfile;

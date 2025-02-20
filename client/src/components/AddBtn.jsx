@@ -19,7 +19,7 @@ function AddBtn() {
             
             </Link>
         </div>
-        <div>
+        <div className="addBtn-container">
           <h1 onClick={buttonNav} className="add-post">+</h1>  
         </div>
     </div>

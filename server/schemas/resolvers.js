@@ -19,10 +19,10 @@ const resolvers = {
         },
         characters: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Character.find(params).sort({ createdAt: -1 }).populate('tags');
+            return Character.find(params).sort({ createdAt: -1 });
         },
         character: async (parent, { characterId }) => {
-            return Character.findOne({ _id: characterId}).populate('tags');
+            return Character.findOne({ _id: characterId});
         },
         tags: async () => {
             return Tag.find().populate('posts');
@@ -144,21 +144,11 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
-        addCharacter: async (parent, { characterName, description, tags = [] }, context) => {
+        addCharacter: async (parent, { characterName, description}, context) => {
             if (context.user) {
-                const tagIds = await Promise.all(
-                    tags.map(async (tagName) => {
-                        let tag = await Tag.findOne({ name: tagName });
-                        if (!tag) {
-                            tag = await Tag.create({ name: tagName });
-                        }
-                        return tag._id;
-                    })
-                );
                 const character = await Character.create({
                     characterName,
                     description,
-                    tags: tagIds,
                     characterAuthor: context.user.username,
                 });
 
@@ -211,23 +201,14 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
-        updateCharacter: async (parent, { characterId, characterName, description, tags = []}, context) => {
+        updateCharacter: async (parent, { characterId, characterName, description}, context) => {
             if (context.user) {
-                const tagIds = await Promise.all(
-                    tags.map(async (tagName) => {
-                        let tag = await Tag.findOne({ name: tagName });
-                        if (!tag) {
-                            tag = await Tag.create({ name: tagName });
-                        }
-                        return tag._id;
-                    })
-                );
 
                 const character = await Character.findOneAndUpdate(
                     {_id: characterId,
                     characterAuthor: context.user.username
                     },
-                    { $set: {characterName, description, tags: tagIds}},
+                    { $set: {characterName, description}},
                     { new: true }
                 );
                 return character;

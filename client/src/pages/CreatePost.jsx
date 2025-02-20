@@ -10,7 +10,6 @@ import Auth from '../utils/auth';
 
 function CreatePost() {
     const [postText, setPostText] = useState('');
-    const [characterCount, setCharacterCount] = useState(0);
     const navigate = useNavigate();
     const username = Auth.getProfile().data.username;
 
@@ -79,71 +78,62 @@ function CreatePost() {
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        if (name === 'postText' && value.length <= 280) {
+        if (name === 'postText' && value.length >= 1) {
             setPostText(value);
-            setCharacterCount(value.length);
         }
     };
 
     return (
-        <div className="create-post">
+        <div>
             {Auth.loggedIn() ? (
-                <>
-                    <div className="header">
-                        <div>
-                            <h1>User Pic</h1>
-                            <h1>{username}</h1>
+                <div className="create-post" >
+                        <div className="username-createPost">
+                            <p>{username}</p>
                         </div>
-                    </div>
-
-                    <p className={`${
-                            characterCount === 280 || error ? 'text-danger' : ''
-                        }`}
-                    >
-                        CharacterCount: {characterCount}/280
-                    </p>
-                    <form className='post-form' onSubmit={handleFormSubmit}>
-                        <div>
-                            <textarea
-                                name="postText"
-                                value={postText}
-                                className="form-input"
-                                onChange={handleChange}
-                            ></textarea>
-                        </div>
-
-                        <div>
-                            <input
-                                type="text"
-                                value={tagInput}
-                                onChange={(e) => setTagInput(e.target.value)}
-                                placeholder='Add tags'
-                            ></input>
-                            <button onClick={handleAddTag}>+</button>
-                            
-                            
-
+                        <form className='post-form' onSubmit={handleFormSubmit}>
                             <div>
-                                {tags.map((tag, index) => (
-                                    <span key={index} className='tag'>
-                                        {tag} <button onClick={() => setTags(tags.filter(t => t !==tag))}>x</button>
-                                    </span>
-                                ))}
+                                <textarea
+                                    name="postText"
+                                    placeholder='Add your thoughts...'
+                                    value={postText}
+                                    className="postText-input"
+                                    onChange={handleChange}
+                                ></textarea>
                             </div>
-                        </div>
 
-                        <div>
-                            <button className="btn" type="submit">
-                                +
-                            </button>
-                        </div>
-                        {error && (
-                            <div>
-                                {error.message}
+                            <div className='tag-form'>
+                                <div className='add-tag'>
+                                    <input
+                                        type="text"
+                                        value={tagInput}
+                                        onChange={(e) => setTagInput(e.target.value)}
+                                        placeholder='Add tags'
+                                    ></input>
+                                    <button className='add-tagBtn'onClick={handleAddTag}>+</button>
+                                </div>
+
+                                <div className="display-tags">
+                                    {tags.map((tag, index) => (
+                                        <span key={index} className='tag-createPost'>
+                                            {tag} <button className='remove-tagBtn' onClick={() => setTags(tags.filter(t => t !==tag))}>x</button>
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
-                        )}
-                    </form>
-                </>
+
+                            <div className='add-postContainer'>
+                                <button className="add-postBtn" type="submit">
+                                    +
+                                </button>
+                            </div>
+                            {error && (
+                                <div>
+                                    {error.message}
+                                </div>
+                            )}
+                        </form>
+                    
+                </div>
             ) : (
                 <p>
                     You need to be logged in to make your post. Please {' '}

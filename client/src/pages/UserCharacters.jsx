@@ -71,21 +71,22 @@ function UserCharacters() {
     return (
         <div>
             <NavBar />
+            <h2 className='banner'>
+                    Viewing {userParam ? `${user.username}'s` : 'your'} characters
+            </h2>
             <div className="current-characters">
                 {user.characters.map((character) => (
                  <div key={character._id} className="character-card">
-                    <div className="character-img">
-                        <p>image</p>
-                    </div>
+
                     <div>
-                        <h1>{character.characterName}</h1>
-                        <p>{character.description}</p>
+                        <h1 className="charName-text">{character.characterName}</h1>
+                        <p className="desc-text">{character.description}</p>
                     </div>
                     <div className="edit-deleteBtns">
-                        <button>
+                        <button className="editChar-btn">
                             <Link to={`/usercharacter/${character._id}`}>Edit</Link>
                         </button>
-                        <button onClick={() => handleRemoveCharacter(character._id)}>Del</button>
+                        <button onClick={() => handleRemoveCharacter(character._id)}>Delete</button>
                     </div>
                 </div>   
                 ))}

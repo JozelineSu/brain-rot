@@ -23,6 +23,7 @@ const Discover = () => {
         
     return (
         <main className="discover">
+            
             <div className="nav-search-container">
                 <NavBar/>
                 <form onSubmit={handleSearch}>
@@ -32,7 +33,7 @@ const Discover = () => {
                         type="text"
                         placeholder="Search..."
                     ></input>
-                    <button type='submit'>
+                    <button className="searchBtn" type='submit'>
                         <img src={SearchIcon} width="30"/>
                     </button>
                 </form>    

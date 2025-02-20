@@ -64,40 +64,51 @@ function CreateCharacter() {
     };
 
     return (
-        <div className="add-character">
+        <>
             {Auth.loggedIn() ? (
-            <>
-                <div className="header">
-                    <div>
-                        <h1>User Pic</h1>
-                        <h1>{username}</h1>
-                    </div>
+            <div className="create-post">
+                <div className="username-createPost">
+                    
+                    <p>{username}</p>
+                    
                 </div>
 
                 <p className={`${
                     characterCount === 120 || error ? 'text-danger' : ''
                 }`}
                 >
-                haracterCount: {characterCount}/280
+                CharacterCount: {characterCount}/280
                 </p>
 
-                <form className="character-form" onSubmit={handleFormSubmit}>
-                    <div>
-                        <textarea
-                            name="characterName"
-                            value={characterName}
-                            className="form-input"
-                            onChange={handleCharNameChange}
-                        ></textarea>
-                        <textarea
-                            name="description"
-                            value={description}
-                            className="form-input"
-                            onChange={handleDescChange}
-                        ></textarea>
+                <form className="post-form" onSubmit={handleFormSubmit}>
+                    
+                        <div className="addChar-container">
+                            <div className="addChar-inputBox">
+                                <h2>Character Name:</h2>
+                                <textarea
+                                    name="characterName"
+                                    value={characterName}
+                                    className="charName-input"
+                                    onChange={handleCharNameChange}
+                                ></textarea>   
+                            </div>
+                            
+                            <div className="addChar-inputBox">
+                                <h2>Description:</h2>
+                                <textarea
+                                    name="description"
+                                    placeholder="..."
+                                    value={description}
+                                    className="description-input"
+                                    onChange={handleDescChange}
+                                ></textarea>    
+                            </div>    
+                        </div>
+                        
+                        
 
-                        <div>
-                            <button className="btn" type="submit">
+                        <div className="add-postContainer">
+                            <button className="add-postBtn" type="submit">
                             +
                             </button>
                         </div>
@@ -108,13 +119,13 @@ function CreateCharacter() {
                         )}
 
 
-                    </div>
+                    
 
                 </form>
 
 
 
-            </>
+            </div>
             ) : (
                 <p>
                     You need to be logged in to make your post. Please {' '}
@@ -122,7 +133,7 @@ function CreateCharacter() {
                 </p>
 
             )}
-        </div>
+        </>
     )
 }
 

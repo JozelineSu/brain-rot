@@ -88,17 +88,13 @@ export const UPDATE_POST = gql`
 `;
 
 export const UPDATE_CHARACTER = gql`
-    mutation updateCharacter($characterId: ID!, $tags: [String], $description: String!, $characterName: String!) {
-        updateCharacter(characterId: $characterId, tags: $tags, description: $description, characterName: $characterName) {
+    mutation updateCharacter($characterId: ID!, $description: String!, $characterName: String!) {
+        updateCharacter(characterId: $characterId, description: $description, characterName: $characterName) {
             _id
             description
             characterName
             characterAuthor
             createdAt
-            tags {
-                _id
-                name
-            }
         }
     }
 `;
@@ -120,17 +116,13 @@ export const ADD_COMMENT  = gql `
 `;
 
 export const ADD_CHARACTER = gql`
-    mutation addCharacter($characterName: String!, $description: String!, $tags: [String]) {
-        addCharacter(characterName: $characterName, description: $description, tags: $tags) {
+    mutation addCharacter($characterName: String!, $description: String!) {
+        addCharacter(characterName: $characterName, description: $description) {
             _id
             characterName
             description
             characterAuthor
             createdAt
-            tags {
-                _id
-                name
-            }
         }
     }
 `;

@@ -21,13 +21,7 @@ const characterSchema = new Schema({
         type: Date,
         default: Date.now,
         get: (timestamp) =>dateFormat(timestamp),
-    },
-    tags: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Tag', // Reference to Tag model
-        },
-    ],
+    }
 });
 
 const Character = model('Character', characterSchema);

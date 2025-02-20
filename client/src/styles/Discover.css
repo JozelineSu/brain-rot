@@ -13,20 +13,19 @@
 
 /*searcbar+nav container*/
 .nav-search-container {
+    padding-top: 10px;
     position: fixed;
     left: 0;
-    width: 90%;
+    width: 89%;
     height: 70px;
     display: flex;
-    justify-content: space-between;
 }
 
 form {
     display: inline-flex;
     flex-direction: row;
-    justify-content: space-between;
     background-color: white;
-    width: 90%;
+    width: 80%;
     padding: 10px;
     border-radius: 10px;
 }
@@ -36,7 +35,7 @@ input{
     width: 100%;
 }
 
-button {
+.searchBtn {
     background-color: white;
     border: none;
     padding: 5px;

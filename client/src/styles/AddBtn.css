@@ -1,6 +1,9 @@
 .add-button {
-    translate: 1415px -150px;
     overflow: visible;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 50px;
 }
 
 .addBtn-nav {

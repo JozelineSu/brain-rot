@@ -20,7 +20,6 @@ type Character {
     description: String
     characterAuthor: String
     createdAt: String
-    tags: [Tag]
 }
 
 type Post {
@@ -62,12 +61,12 @@ type Mutation {
     addTag(tagText: String!): Tag
     addPost(postText: String!, tags: [String]): Post
     addComment(postId: ID!, commentText: String!): Post
-    addCharacter(characterName: String!, description: String!, tags: [String]): Character
+    addCharacter(characterName: String!, description: String!): Character
     removePost(postId: ID!): Post
     updatePost(postId: ID!, postText: String!, tags: [String]): Post
     removeComment(postId: ID!, commentId: ID!): Post
     removeCharacter(characterId: ID!): Character
-    updateCharacter(characterId: ID!, characterName: String!, description: String!, tags: [String]): Character
+    updateCharacter(characterId: ID!, characterName: String!, description: String!): Character
 }
 
 `;

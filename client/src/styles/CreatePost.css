@@ -1,42 +1,92 @@
 .create-post {
     background-color: white;
-    height: 100vh;
-}
-
-.header {
+    border-radius: 15px;
     display: flex;
-    flex-direction: row;
-    z-index: -1;
+    flex-direction: column;
+    width: 50vw;
+    height: 80vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.username {
-    color: blue;
+.username-createPost {
+    text-align: right;
+    padding: 5px;
+    padding-right: 10px;
+    border-bottom: solid 5px rgb(36, 3, 43);
+}
+
+.postText-input {
+    resize: none;
+    width: 40vw;
+    height: 40vh;
+    margin: 10px;
+
 }
 
 .post-form {
-    height: 100vh;
-    border: none;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-
-    
-}
-
-.user-post {
-    width: 80%;
-    height: 80%;
+    width: 97%;
+    height: 100%;
     display: flex;
-    align-self: center;
+    flex-direction: column;
 }
 
-.post-buttons {
-    align-self: flex-end;
-    width: 30%;
-    margin-right: 175px;
+.tag-form {
+    border: solid 1px rgb(36, 3, 43);
+    display: flex;
+    flex-direction: column;
 }
-.submit-post {
-    width: 10%;
-    align-self: center;
-    margin-left: 405px;
+
+.add-tag {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 0 6px 0 rgba(128, 128, 128, 0.171);
 }
+
+.add-tagBtn {
+    margin: 5px;
+    border: solid 1px rgb(36, 3, 43);
+    width: 3%;
+    border-radius: 20px;
+}
+
+.display-tags {
+    margin: 10px;
+    padding: 5px;
+    overflow-y: auto;
+    height: 100px;
+    line-height: 2rem;
+   
+}
+
+.display-tags::-webkit-scrollbar {
+    display: none;
+}
+
+.tag-createPost {
+    
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+    background-color: rgba(128, 128, 128, 0.171);
+}
+
+.remove-tagBtn{
+    border: none;
+}
+
+.add-postContainer {
+    text-align: right;
+}
+
+.add-postBtn {
+    font-size: 3rem;
+    width: 65px;
+    border-radius: 40px;
+    color: rgb(140, 253, 210);
+    background-color: rgb(36, 3, 43);
+}
+

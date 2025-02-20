@@ -2,6 +2,8 @@ import '../styles/Characters.css';
 
 import { Navigate, useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+import { useEffect } from "react";
+
 import AddBtn from "../components/AddBtn";
 import NavBar from "../components/NavBar";
 
@@ -12,11 +14,15 @@ import Auth from '../utils/auth';
 const Characters = () => {
     const { username: userParam } = useParams();
 
-    const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    const { loading, data, refetch} = useQuery(userParam ? QUERY_USER : QUERY_ME, {
         variables: { username: userParam },
     });
 
     const user = data?.me || data?.user || {};
+
+    useEffect(() => {
+        refetch();
+    }, []);
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
         return <Navigate to="/me" />;
@@ -34,11 +40,11 @@ const Characters = () => {
 
     return (
         <>
-            <div>
                 <NavBar/>
-                <h2>
+                <h2 className='banner'>
                     Viewing {userParam ? `${user.username}'s` : 'your'} characters
                 </h2>
+                <div className='current-characters'>
                 {user.characters.map((character) => (
                     <div key={character._id} className="character-card">
                         <div className="character-img">
@@ -51,10 +57,12 @@ const Characters = () => {
                     </div>
 
                 ))
-                }
+                }    
+                </div>
+                
                 <AddBtn/>
 
-            </div>
+            
         
         </>
     )

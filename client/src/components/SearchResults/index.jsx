@@ -1,4 +1,7 @@
+import "../../styles/PostList.css";
 import { Link } from "react-router-dom";
+
+import CommentIcon from "../../images/comment_icon.png";
 
 const SearchResults = ({posts}) => {
 
@@ -8,11 +11,11 @@ const SearchResults = ({posts}) => {
             {posts && (
                 posts.map((post) => (
                     <>         
-                        <div key={post._id}>
+                        <div key={post._id} className="post-content">
         
                             <div className="username">
                                 <Link
-                                    className="username"
+                                    className="username-link"
                                     to={`/profiles/${post.postAuthor}`}
                                 >
                                     {post.postAuthor}
@@ -24,8 +27,8 @@ const SearchResults = ({posts}) => {
                              <div className="post-tags">
                                 {
                                     post.tags.map((tag) => (
-                                        <div key={tag._id}>
-                                            <p>{tag.tagText}</p>
+                                        <div key={tag._id} className="tag">
+                                            <p>#{tag.tagText},</p>
                                         </div>
                                     ))
                                 }
@@ -34,9 +37,8 @@ const SearchResults = ({posts}) => {
                                 <Link
                                     className="commentBtn"
                                     to={`/posts/${post._id}`}
-                                >Comment 
+                                ><img src={CommentIcon} width="40"/>
                                 </Link>
-                            <p>heart</p>
                             </div>
                         </div>
                     </>    
